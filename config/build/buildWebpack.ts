@@ -19,9 +19,7 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 	const isProd = mode === 'production';
 	const optimizationConfig = {
 		minimize: true,
-		minimizer: [
-			new TerserPlugin(),
-		],
+		minimizer: [new TerserPlugin()],
 	};
 	return {
 		mode: mode ?? 'development',
@@ -34,6 +32,7 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 			extensions: ['.tsx', '.ts', '.js'],
 			alias: {
 				'@': paths.src,
+				'@router': paths.src,
 			},
 		},
 		plugins: buildPlugins(options),
@@ -47,7 +46,7 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 		performance: {
 			hints: false,
 			maxEntrypointSize: 512000,
-			maxAssetSize: 512000
-		}
+			maxAssetSize: 512000,
+		},
 	};
 }

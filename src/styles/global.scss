@@ -1,0 +1,28 @@
+@import './colors';
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+	background-color: $dark-background;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}

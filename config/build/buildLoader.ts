@@ -64,7 +64,7 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 	const babelLoader = buildBabelLoader(options);
 	return [
 		scssLoader,
-		 //tsLoader,
+		//tsLoader,
 		babelLoader,
 		assetLoader,
 		svgrLoader,

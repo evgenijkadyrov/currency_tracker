@@ -16,7 +16,8 @@
 			"@/pages/*": ["./src/pages/*"],
 			"@/actions/*": ["./src/store/actions/*"],
 			"@/reducers/*": ["./src/store/reducers/*"],
-			"@/utils/*": ["./src/utils/*"]
+			"@/utils/*": ["./src/utils/*"],
+			"@/router/*": ["./src/router/*"]
 		}
 	},
 	"ts-node": {
