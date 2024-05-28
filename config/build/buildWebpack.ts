@@ -20,17 +20,11 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 	const optimizationConfig = {
 		minimize: true,
 		minimizer: [
-			new TerserPlugin({
-				terserOptions: {
-					mangle: true,
-					keep_classnames: false,
-				},
-			}),
+			new TerserPlugin(),
 		],
 	};
 	return {
 		mode: mode ?? 'development',
-
 		entry: paths.entry,
 		devtool: isDev ? 'inline-source-map' : false,
 		module: {
@@ -50,5 +44,10 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 		},
 		devServer: isDev ? buildDevServer(options) : undefined,
 		optimization: isProd ? optimizationConfig : {},
+		performance: {
+			hints: false,
+			maxEntrypointSize: 512000,
+			maxAssetSize: 512000
+		}
 	};
 }
