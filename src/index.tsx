@@ -1,12 +1,10 @@
 import { Suspense } from 'react';
-import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import ReactDOM from "react-dom/client";
 import { App } from '@/components/App';
 import { LazyAbout } from '@/pages/about/index.lazy';
 import { LazyContact } from '@/pages/contact/index.lazy';
 
-document.body.innerHTML = '<div id="app"></div>';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -31,6 +29,5 @@ const router = createBrowserRouter([
 		],
 	},
 ]);
-// Render your React component instead
-const root = createRoot(document.getElementById('app'));
-root.render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById("root")!).render(<RouterProvider router={router} />)
+
