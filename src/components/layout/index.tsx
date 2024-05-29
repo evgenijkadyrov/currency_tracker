@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import { Footer } from '@/components/footer';
 import Header from '@/components/header';
 
 import * as styles from './styles.module.scss';
@@ -14,7 +15,7 @@ export const Layout = () => (
 					<Outlet />
 				</Suspense>
 			</main>
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	</div>
 );

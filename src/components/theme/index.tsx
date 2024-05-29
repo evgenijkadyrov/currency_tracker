@@ -10,7 +10,7 @@ type Props = {
 	children: string | ReactElement | ReactElement[];
 };
 export const ThemeProvider = ({ children }: Props) => {
-	const [theme, setTheme] = useState<Theme>('light');
+	const [theme, setTheme] = useState<Theme>('dark');
 	const toggleTheme = () => {
 		setTheme(theme === 'light' ? 'dark' : 'light');
 	};

@@ -1,0 +1,42 @@
+@import '@/styles/colors.scss';
+.menuWrapper {
+	flex-basis: 40%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.menuContainer {
+	display: flex;
+	gap: 20px;
+}
+
+.menuSection {
+	display: flex;
+	flex-direction: column;
+}
+
+.menuTitle {
+	color: $white-font;
+	font-size: 28px;
+	font-weight: 400;
+	line-height: 150%;
+	letter-spacing: 0;
+	text-align: left;
+	margin-bottom: 40px;
+}
+.menuTitleLight {
+	color: $black-font;
+}
+.menuItem {
+	color: $dark-grey-font;
+	font-family: Inter, serif;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 29px;
+	letter-spacing: 0;
+	text-align: left;
+	margin-bottom: 28px;
+}
+.menuItemLight {
+	color: $dark-grey-font;
+}

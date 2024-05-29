@@ -1,0 +1,39 @@
+@import '@/styles/colors.scss';
+.wrapper {
+	display: flex;
+}
+
+.description {
+	flex-basis: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+
+	&Text {
+		color: $white-font;
+		font-size: 24px;
+		line-height: 150%;
+		letter-spacing: 0;
+		text-align: left;
+		&Light {
+			color: $dark-grey-font;
+		}
+	}
+
+	&Title {
+		background: linear-gradient(
+			92.29deg,
+			$title-gradient-begin,
+			$title-gradient-middle,
+			$title-gradient-end
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-size: 26px;
+		font-weight: 600;
+		line-height: 39px;
+		letter-spacing: 0;
+		text-align: left;
+		margin-bottom: 40px;
+	}
+}
