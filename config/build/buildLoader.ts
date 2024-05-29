@@ -61,7 +61,7 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 		],
 		exclude: /node_modules/,
 	};
-	const babelLoader = buildBabelLoader(options);
+	const babelLoader = buildBabelLoader();
 	return [
 		scssLoader,
 		//tsLoader,
