@@ -1,7 +1,4 @@
-import { BuildsOptions } from './types';
-
-export function buildBabelLoader({ mode }: BuildsOptions) {
-	const isDev = mode === 'development';
+export function buildBabelLoader() {
 	return {
 		test: /\.tsx?$/,
 		exclude: /node_modules/,
@@ -10,7 +7,7 @@ export function buildBabelLoader({ mode }: BuildsOptions) {
 			options: {
 				presets: [
 					'@babel/preset-env',
-					['@babel/preset-react', { runtime: isDev ? 'automatic' : 'classic' }],
+					['@babel/preset-react', { runtime: 'automatic' }],
 					'@babel/preset-typescript',
 				],
 			},

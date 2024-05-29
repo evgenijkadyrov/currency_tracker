@@ -10,9 +10,10 @@
 		"start": "webpack serve --open --port=3000 --env mode=development",
 		"build:mobile": "webpack serve --open --port=3000 --env mode=development --env platform=mobile",
 		"build:desktop": "webpack serve --open --port=3000 --env mode=development --env platform=desktop",
-		"prepare": "husky",
+		"prepare": "husky && husky install",
 		"lint": "eslint \"src/**/*.{ts,tsx}\"",
-		"lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix"
+		"lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+		"prettier": "prettier \"src/**/*.{ts,tsx}\" . --write --cache"
 	},
 	"keywords": [],
 	"author": "",
@@ -74,6 +75,8 @@
 		"react-router-dom": "^6.23.1"
 	},
 	"lint-staged": {
-		"**/*": "prettier --write --ignore-unknown"
+		"*.{js,jsx,ts,tsx}": "yarn eslint",
+		"*.{js,jsx,ts,tsx,html,css}": "yarn prettier --check",
+		"*.js": "eslint --cache --fix"
 	}
 }

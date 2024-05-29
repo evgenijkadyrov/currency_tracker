@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { AppRoutes } from '@/constants/appRoutes';
-import { LazyHome } from '@/pages/home/index.lazy';
+import Home from '@/pages/home';
 
 export const router = createBrowserRouter([
 	{
 		path: AppRoutes.HOME,
-		element: <LazyHome />,
+		element: <Home />,
 	},
 ]);
