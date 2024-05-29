@@ -10,6 +10,7 @@ export default (env: EnvVariables) => {
 		html: path.resolve(__dirname, 'public', 'index.html'),
 		output: path.resolve(__dirname, 'dist'),
 		src: path.resolve(__dirname, 'src'),
+		router: path.resolve(__dirname, 'router'),
 		public: path.resolve(__dirname, 'public'),
 	};
 	const options: BuildsOptions = {
