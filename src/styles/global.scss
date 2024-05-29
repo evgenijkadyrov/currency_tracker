@@ -12,6 +12,7 @@ html,
 body {
 	height: 100%;
 	background-color: $dark-background;
+	color: $grey-font;
 }
 
 body {
@@ -20,7 +21,11 @@ body {
 }
 
 a {
+	color: $white;
 	text-decoration: none;
+}
+a:hover {
+	color: $grey-font;
 }
 
 ul {
