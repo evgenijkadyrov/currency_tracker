@@ -1,7 +1,8 @@
+@import '@/styles/colors.scss';
 .container {
-	margin-bottom: 100px;
-	color: red;
-	display: flex;
-	flex-direction: column;
-	gap: 75px;
+	padding: 1px;
+}
+.containerDark {
+	color: $black-font;
+	background-color: $light-background;
 }
