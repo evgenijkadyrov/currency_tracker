@@ -1,22 +1,24 @@
-import { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 
-import EuroIcon from '@/assets/icons/Euro Icon.svg';
 import { ThemeContext } from '@/components/theme';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
 
 import * as styles from './styles.module.scss';
 
-export const BasicItem = () => {
-	const { theme } = useContext(ThemeContext);
+interface IBasicItem {
+	icon: ReactNode;
+	name: string;
+	value: number;
+}
 
+export const BasicItem = ({ icon, name, value }: IBasicItem) => {
+	const { theme } = useContext(ThemeContext);
 	return (
 		<div
 			className={getLinkClass(styles.container, styles.containerDark, theme)}
 		>
 			<div className={styles.containerBlock}>
-				<div className={styles.containerBlockIcon}>
-					<EuroIcon width={80} height={80} />
-				</div>
+				<div className={styles.containerBlockIcon}>{icon}</div>
 				<div className={styles.containerBlockData}>
 					<div
 						className={getLinkClass(
@@ -25,9 +27,11 @@ export const BasicItem = () => {
 							theme
 						)}
 					>
-						Euro
+						{name}
 					</div>
-					<div className={styles.containerBlockDataLowerText}> 0.15%</div>
+					<div className={styles.containerBlockDataLowerText}>
+						R$ {value.toFixed(4)}
+					</div>
 				</div>
 			</div>
 		</div>

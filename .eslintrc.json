@@ -21,6 +21,7 @@
 	},
 	"plugins": ["@typescript-eslint", "react", "simple-import-sort", "import"],
 	"rules": {
+		/* eslint-disable consistent-return */
 		"import/no-unresolved": "error",
 		"simple-import-sort/imports": [
 			"error",
