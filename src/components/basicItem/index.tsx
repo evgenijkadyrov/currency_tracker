@@ -1,7 +1,8 @@
-import { ReactNode, useContext } from 'react';
+import { KeyboardEvent, ReactNode, useContext } from 'react';
 
 import { ThemeContext } from '@/components/theme';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
+import { getSymbolByTitle } from '@/utils/getSymbolByTitle.helper';
 
 import * as styles from './styles.module.scss';
 
@@ -9,13 +10,34 @@ interface IBasicItem {
 	icon: ReactNode;
 	name: string;
 	value: number;
+	setModalOpen: (value: boolean) => void;
+	setSymbol: (value: string) => void;
 }
 
-export const BasicItem = ({ icon, name, value }: IBasicItem) => {
+export const BasicItem = ({
+	icon,
+	name,
+	value,
+	setModalOpen,
+	setSymbol,
+}: IBasicItem) => {
 	const { theme } = useContext(ThemeContext);
+	const handleClick = () => {
+		setModalOpen(true);
+		setSymbol(getSymbolByTitle(name));
+	};
+	const handleKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
+		if (event.key === 'Enter') {
+			handleClick();
+		}
+	};
 	return (
 		<div
 			className={getLinkClass(styles.container, styles.containerDark, theme)}
+			onClick={handleClick}
+			onKeyPress={handleKeyPress}
+			role="button"
+			tabIndex={0}
 		>
 			<div className={styles.containerBlock}>
 				<div className={styles.containerBlockIcon}>{icon}</div>

@@ -1,0 +1,107 @@
+@import '@/styles/colors';
+
+.modalWrapper {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb($black, 0.5);
+}
+
+.modal {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	padding: 50px;
+
+	border-radius: 15%;
+
+	background-color: $grey;
+
+	@media screen and (max-width: 500px) {
+		width: 100%;
+		border-radius: 0;
+		padding: 40px 15px;
+	}
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 15px;
+}
+
+.input {
+	width: 80%;
+	padding: 10px 15px;
+	border: none;
+
+	font: inherit;
+	font-size: 24px;
+
+	outline: none;
+	border-radius: 15px;
+
+	@media screen and (max-width: 500px) {
+		width: 60%;
+		padding: 5px 10px;
+	}
+}
+
+.symbol {
+	font-size: 24px;
+	color: $light-grey-font;
+}
+
+.closeButton {
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+
+	padding: 10px 15px;
+	border: none;
+
+	font: inherit;
+	font-size: 24px;
+
+	outline: none;
+	border-radius: 15px;
+
+	transform: translateX(-50%);
+	cursor: pointer;
+	transition: all 0.3s linear;
+
+	&:hover {
+		transform: translateX(-50%) scale(1.05);
+	}
+}
+
+.select {
+	padding: 10px 0;
+	border: none;
+
+	font: inherit;
+	font-size: 24px;
+
+	outline: none;
+	border-radius: 15px;
+
+	cursor: pointer;
+
+	@media screen and (max-width: 500px) {
+		padding: 5px 0;
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type='number'] {
+	appearance: textfield;
+	-moz-appearance: textfield;
+}

@@ -90,7 +90,8 @@ export const DataAssets: IDataAssets = {
 		symbol: 'ETH',
 	},
 };
-export const getAssetsList = (value) => Object.keys(value).join(',');
+export const getAssetsList = (value: IDataAssets) =>
+	Object.keys(value).join(',');
 
 export const dataStocks = {
 	asset_id_base: 'IFIX',

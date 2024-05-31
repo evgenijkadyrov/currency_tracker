@@ -7,8 +7,15 @@ import * as styles from './styles.module.scss';
 interface IStocksBlock {
 	title: string;
 	data: ICurrencyData;
+	setModalOpen: (value: boolean) => void;
+	setSymbol: (value: string) => void;
 }
-export const StocksBlock = ({ title, data }: IStocksBlock) => (
+export const StocksBlock = ({
+	title,
+	data,
+	setModalOpen,
+	setSymbol,
+}: IStocksBlock) => (
 	<div className={styles.container}>
 		<div className={styles.title}> {title}</div>
 		<div className={styles.wrapper}>
@@ -21,6 +28,8 @@ export const StocksBlock = ({ title, data }: IStocksBlock) => (
 						name={name}
 						value={asset.rate}
 						icon={icon}
+						setModalOpen={setModalOpen}
+						setSymbol={setSymbol}
 					/>
 				);
 			})}
