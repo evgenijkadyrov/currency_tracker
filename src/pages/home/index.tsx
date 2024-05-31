@@ -28,7 +28,7 @@ const Home = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const result: ICurrencyData = await fetchCurrencyExchange('USD');
+				const result = await fetchCurrencyExchange('USD');
 				setData(result);
 			} catch (e) {
 				throw new Error(e);
