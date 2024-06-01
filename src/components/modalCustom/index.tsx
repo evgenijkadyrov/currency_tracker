@@ -11,9 +11,10 @@ type Props = {
 	title: string;
 	onClose: () => void;
 	children: ReactNode | ReactNode[];
+	size?: { width: string; height: string };
 };
 
-export const Modal = ({ children, title, onClose }: Props) => {
+export const Modal = ({ children, title, onClose, size }: Props) => {
 	const rootRef = useRef<HTMLDivElement>(null);
 	const [isMounted, setMounted] = useState(false);
 
@@ -49,11 +50,14 @@ export const Modal = ({ children, title, onClose }: Props) => {
 		useCallback(() => {
 			onClose?.();
 		}, [onClose]);
-
+	const modalStyle = {
+		width: size?.width || '550px',
+		height: size?.height || '400px',
+	};
 	return isMounted ? (
 		<Portal id={MODAL_CONTAINER_ID}>
 			<div className={styles.wrap} ref={rootRef} data-testid="wrap">
-				<div className={styles.content}>
+				<div className={styles.content} style={modalStyle}>
 					<button
 						type="button"
 						className={styles.closeButton}
