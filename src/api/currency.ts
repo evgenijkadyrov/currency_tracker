@@ -10,7 +10,14 @@ export interface ICurrencyData {
 	asset_id_base: string;
 	rates: CurrencyExchange[];
 }
-export interface IBasicStocks {
+
+export interface IExchange {
+	time: string;
+	asset_id_base: string;
+	asset_id_quote: string;
+	rate: number;
+}
+export interface IHistoricalDate {
 	time_period_start: string;
 	time_period_end: string;
 	time_open: string;
@@ -20,13 +27,6 @@ export interface IBasicStocks {
 	rate_low: number;
 	rate_close: number;
 }
-export interface IExchange {
-	time: string;
-	asset_id_base: string;
-	asset_id_quote: string;
-	rate: number;
-}
-
 export const fetchCurrencyExchange = async (assetIdQuote: string) => {
 	const currency = await instance.get<ICurrencyData>(`/${assetIdQuote}`, {
 		params: { filter_asset_id: getAssetsList(DataAssets), invert: true },
@@ -44,16 +44,23 @@ export const getExchange = async (
 	);
 	return exchange.data;
 };
-export const fetchTimeseriesData = async (
+export const fetchHistoricalData = async (
 	assetIdQuote: string,
-	assetIdBase: string
+	assetIdBase: string,
+	time_period_start: string,
+	time_period_end: string
 ) => {
-	const currency = await instance.get<IBasicStocks>(
+	const historicalData = await instance.get<IHistoricalDate[]>(
 		`/${assetIdBase}/${assetIdQuote}/history`,
 		{
-			params: { period_id: '1DAY', limit: 1 },
+			params: {
+				period_id: '1DAY',
+				limit: 10,
+				time_start: time_period_start,
+				time_end: time_period_end,
+			},
 			...configApi(),
 		}
 	);
-	return currency.data;
+	return historicalData.data;
 };
