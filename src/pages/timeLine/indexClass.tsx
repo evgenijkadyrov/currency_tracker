@@ -5,6 +5,8 @@ import { BasicItem } from '@/components/basicItem';
 import { Chart } from '@/components/Chart';
 import { DataPicker } from '@/components/DatePicker';
 import { Modal } from '@/components/modalCustom';
+import { Notification } from '@/components/Notification';
+import { NotificationDisplay } from '@/components/NotificationDisplay';
 import { SelectAsset } from '@/components/SelectAssets';
 import { DataAssets } from '@/constants/dataAssets';
 import { IProps, IState } from '@/pages/timeLine/index.interface';
@@ -12,8 +14,18 @@ import { formatDateToISOString } from '@/utils/formattedDate.helper';
 
 import * as styles from './styles.module.scss';
 
+export const calculateDateDiff = (
+	startDate: string,
+	endDate: string
+): number => {
+	const diff = Date.parse(endDate) - Date.parse(startDate);
+	return diff / 1000 / 3600 / 24;
+};
+
 class TimeLineClass extends Component<IProps, IState> {
-	constructor(props) {
+	private notification = new Notification();
+
+	constructor(props: IProps) {
 		super(props);
 		this.state = {
 			currentAsset: 'EUR',
@@ -30,33 +42,35 @@ class TimeLineClass extends Component<IProps, IState> {
 	}
 
 	componentDidUpdate(prevProps: IProps, prevState: IState) {
-		const { currentAsset, selectedStartDate, selectedEndDate } = this.state;
+		const { currentAsset, selectedEndDate } = this.state;
 		if (
 			currentAsset !== prevState.currentAsset ||
-			selectedStartDate !== prevState.selectedStartDate ||
 			selectedEndDate !== prevState.selectedEndDate
 		) {
 			this.fetchData();
 		}
 	}
 
-	handleEndDate = (date: Date): void => {
+	handleStartDate = (date: Date) => {
 		this.setState((prevState) => ({
 			...prevState,
-			selectedEndDate: formatDateToISOString(date),
+			selectedStartDate: formatDateToISOString(date),
+		}));
+	};
+
+	handleEndDate = (date: Date): void => {
+		const { selectedStartDate } = this.state;
+		const endDate = formatDateToISOString(date);
+		this.notification.setDiff(calculateDateDiff(selectedStartDate, endDate));
+		this.setState((prevState) => ({
+			...prevState,
+			selectedEndDate: endDate,
 			isModalActive: false,
 		}));
 	};
 
 	handleAsset = (value: string) => {
 		this.setState((prevState) => ({ ...prevState, currentAsset: value }));
-	};
-
-	handleStartDate = (date: Date) => {
-		this.setState((prevState) => ({
-			...prevState,
-			selectedStartDate: formatDateToISOString(date),
-		}));
 	};
 
 	handleOpenModal = () => {
@@ -125,6 +139,7 @@ class TimeLineClass extends Component<IProps, IState> {
 						/>
 					</Modal>
 				)}
+				<NotificationDisplay notification={this.notification} />
 			</div>
 		);
 	}
