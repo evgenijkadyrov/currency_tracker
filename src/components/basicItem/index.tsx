@@ -9,9 +9,9 @@ import * as styles from './styles.module.scss';
 interface IBasicItem {
 	icon: ReactNode;
 	name: string;
-	value: number;
-	setModalOpen: (value: boolean) => void;
-	setSymbol: (value: string) => void;
+	value?: number;
+	setModalOpen?: (value: boolean) => void;
+	setSymbol?: (value: string) => void;
 }
 
 export const BasicItem = ({
@@ -51,9 +51,11 @@ export const BasicItem = ({
 					>
 						{name}
 					</div>
-					<div className={styles.containerBlockDataLowerText}>
-						R$ {value.toFixed(4)}
-					</div>
+					{value && (
+						<div className={styles.containerBlockDataLowerText}>
+							R$ {value?.toFixed(4)}
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

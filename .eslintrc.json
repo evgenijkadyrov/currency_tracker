@@ -23,6 +23,7 @@
 	"rules": {
 		/* eslint-disable consistent-return */
 		"react/require-default-props": "off",
+		"@typescript-eslint/no-explicit-any": "off",
 		"import/no-unresolved": "error",
 		"simple-import-sort/imports": [
 			"error",

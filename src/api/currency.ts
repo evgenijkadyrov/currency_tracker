@@ -27,6 +27,14 @@ export interface IHistoricalDate {
 	rate_low: number;
 	rate_close: number;
 }
+export interface IReturnCurrencyHistory {
+	date: number | undefined;
+	open: number;
+	high: number;
+	low: number;
+	close: number;
+	interval: [number, number];
+}
 export const fetchCurrencyExchange = async (assetIdQuote: string) => {
 	const currency = await instance.get<ICurrencyData>(`/${assetIdQuote}`, {
 		params: { filter_asset_id: getAssetsList(DataAssets), invert: true },
@@ -50,17 +58,26 @@ export const fetchHistoricalData = async (
 	time_period_start: string,
 	time_period_end: string
 ) => {
-	const historicalData = await instance.get<IHistoricalDate[]>(
+	const { data } = await instance.get<IHistoricalDate[]>(
 		`/${assetIdBase}/${assetIdQuote}/history`,
 		{
 			params: {
 				period_id: '1DAY',
-				limit: 10,
+				limit: 100,
 				time_start: time_period_start,
 				time_end: time_period_end,
 			},
 			...configApi(),
 		}
 	);
-	return historicalData.data;
+	// const formattedData = data.map((item) => ({
+	// 	date: new Date(item.time_period_start.slice(0, 10)).setHours(0, 0, 0, 0),
+	// 	open: item.rate_open,
+	// 	high: item.rate_high,
+	// 	low: item.rate_low,
+	// 	close: item.rate_close,
+	// 	interval: [item.rate_open, item.rate_close] as [number, number],
+	// }));
+
+	return data;
 };
