@@ -1,7 +1,7 @@
 import { createContext, ReactElement, useMemo, useState } from 'react';
 
-type Theme = 'light' | 'dark';
-type ThemeContextProp = { theme: Theme; toggleTheme: () => void };
+export type Theme = 'light' | 'dark';
+export type ThemeContextProp = { theme: Theme; toggleTheme: () => void };
 
 export const ThemeContext = createContext<ThemeContextProp>(
 	{} as ThemeContextProp
