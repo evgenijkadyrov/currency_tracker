@@ -20,6 +20,7 @@ const TimeLine = () => {
 	const [selectedStartDate, setSelectedStartDate] = useState<string | null>(
 		null
 	);
+	const [limit, setLimit] = useState(100);
 	const [selectedEndDate, setSelectedEndDate] = useState<string | null>(null);
 	const [isModalActive, setModalActive] = useState(false);
 	const [historicalData, setHistoricalData] = useState<IHistoricalDate[]>([]);
@@ -36,6 +37,9 @@ const TimeLine = () => {
 	const handleEndDate = (date: Date) => {
 		setSelectedEndDate(formatDateToISOString(date));
 	};
+	const handleChangeLimit = () => {
+		setLimit(30);
+	};
 
 	const handleAsset = (value: string) => {
 		setCurrentAsset(value);
@@ -47,7 +51,8 @@ const TimeLine = () => {
 					'USDT',
 					currentAsset,
 					selectedStartDate,
-					selectedEndDate
+					selectedEndDate,
+					limit
 				);
 				setHistoricalData(result);
 			} catch (e) {
@@ -73,6 +78,13 @@ const TimeLine = () => {
 
 			<button type="button" onClick={handleOpenModal} className={styles.button}>
 				Select date period
+			</button>
+			<button
+				type="button"
+				onClick={handleChangeLimit}
+				className={styles.button}
+			>
+				Create chart for month
 			</button>
 			<div className={styles.containerItem}>
 				<BasicItem

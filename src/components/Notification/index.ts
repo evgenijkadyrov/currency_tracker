@@ -1,25 +1,25 @@
-import { INotification } from '@/components/NotificationDisplay';
-
-export class Notification implements INotification {
-	diff = 30;
-
-	subscribers: any = [];
-
-	subscribe = (functionToSubscribe: any): void => {
-		this.subscribers.push(functionToSubscribe);
-
-		functionToSubscribe(this.diff);
-	};
-
-	unsubscribe = (functionToUnsubscribe: any): void => {
-		this.subscribers = this.subscribers.filter(
-			(func: any) => func !== functionToUnsubscribe
-		);
-	};
-
-	setDiff = (newDiff: number): void => {
-		this.diff = newDiff;
-
-		this.subscribers.forEach((subscriber: any) => subscriber(this.diff));
-	};
+export interface Observer {
+	update: () => void;
 }
+class SubjectClass {
+	private observers: Observer[] = [];
+
+	attach(observer: Observer) {
+		this.observers.push(observer);
+	}
+
+	detach(observer: Observer) {
+		const index = this.observers.indexOf(observer);
+		if (index !== -1) {
+			this.observers.splice(index, 1);
+		}
+	}
+
+	notifyObservers() {
+		this.observers.forEach((observer) => {
+			observer.update();
+		});
+	}
+}
+
+export const notification = new SubjectClass();

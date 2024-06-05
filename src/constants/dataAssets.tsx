@@ -92,6 +92,7 @@ export const DataAssets: IDataAssets = {
 };
 export const getAssetsList = (value: IDataAssets) =>
 	Object.keys(value).join(',');
+export const currencies = getAssetsList(DataAssets).split(',');
 
 export const dataStocks = {
 	asset_id_base: 'IFIX',

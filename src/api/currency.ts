@@ -56,14 +56,15 @@ export const fetchHistoricalData = async (
 	assetIdQuote: string,
 	assetIdBase: string,
 	time_period_start: string,
-	time_period_end: string
+	time_period_end: string,
+	limit: number
 ) => {
 	const { data } = await instance.get<IHistoricalDate[]>(
 		`/${assetIdBase}/${assetIdQuote}/history`,
 		{
 			params: {
 				period_id: '1DAY',
-				limit: 100,
+				limit,
 				time_start: time_period_start,
 				time_end: time_period_end,
 			},

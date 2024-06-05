@@ -1,0 +1,102 @@
+@import '@/styles/colors';
+
+.inputContainer {
+	position: relative;
+
+	width: 450px;
+	margin: 0 auto;
+
+	@media screen and (max-width: 450px) {
+		width: 100%;
+	}
+}
+
+.title {
+	margin-bottom: 20px;
+
+	font-weight: 400;
+	font-size: 38px;
+	color: $white-font;
+	text-align: center;
+
+	@media screen and (max-width: 500px) {
+		font-size: 20px;
+	}
+}
+
+.input {
+	width: 100%;
+	padding: 10px 15px;
+	border: 1px solid $black;
+
+	font: inherit;
+	font-size: 18px;
+	font-weight: 400;
+
+	outline: none;
+	border-radius: 8px;
+
+	color: $black-font;
+	background-color: $white;
+
+	&DarkTheme {
+		color: $light-grey-font;
+		background-color: $input-background;
+	}
+}
+
+.currencyList {
+	position: absolute;
+	top: 50px;
+	left: 0;
+
+	width: 100%;
+	max-height: 135px;
+	height: auto;
+
+	color: $black-font;
+	background-color: $white;
+
+	overflow: auto;
+	z-index: 100;
+	transition: all 0.3s linear;
+	cursor: pointer;
+
+	&DarkTheme {
+		color: $light-grey-font;
+		background-color: $input-background;
+	}
+
+	&Item {
+		padding: 10px 15px;
+
+		&:hover {
+			background-color: $light-grey;
+		}
+
+		&Button {
+			width: 100%;
+			height: 100%;
+			border: none;
+
+			font: inherit;
+			text-align: left;
+
+			outline: none;
+			background-color: transparent;
+			color: $black-font;
+
+			cursor: pointer;
+
+			&DarkTheme {
+				color: $light-grey-font;
+			}
+		}
+
+		&DarkTheme {
+			&:hover {
+				background-color: $hover-input-background;
+			}
+		}
+	}
+}

@@ -7,5 +7,8 @@ export interface IState {
 	selectedEndDate: string | null;
 	isModalActive: boolean;
 	historicalData: IHistoricalDate[];
+	limit: number;
+	inputValue: string;
+	dataReceived: boolean;
 }
 export type IProps = Record<string, never>;

@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { ChangeEvent, Component } from 'react';
 
 import { fetchHistoricalData } from '@/api/currency';
 import { BasicItem } from '@/components/basicItem';
 import { Chart } from '@/components/Chart';
 import { DataPicker } from '@/components/DatePicker';
+import { Input } from '@/components/Input';
 import { Modal } from '@/components/modalCustom';
-import { Notification } from '@/components/Notification';
-import { NotificationDisplay } from '@/components/NotificationDisplay';
+import { notification, Observer } from '@/components/Notification';
+import { NotificationComponent } from '@/components/NotificationComponent';
 import { SelectAsset } from '@/components/SelectAssets';
 import { DataAssets } from '@/constants/dataAssets';
 import { IProps, IState } from '@/pages/timeLine/index.interface';
@@ -14,17 +15,7 @@ import { formatDateToISOString } from '@/utils/formattedDate.helper';
 
 import * as styles from './styles.module.scss';
 
-export const calculateDateDiff = (
-	startDate: string,
-	endDate: string
-): number => {
-	const diff = Date.parse(endDate) - Date.parse(startDate);
-	return diff / 1000 / 3600 / 24;
-};
-
-class TimeLineClass extends Component<IProps, IState> {
-	private notification = new Notification();
-
+class TimeLineClass extends Component<IProps, IState> implements Observer {
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
@@ -34,22 +25,36 @@ class TimeLineClass extends Component<IProps, IState> {
 			selectedEndDate: null,
 			isModalActive: false,
 			historicalData: [],
+			limit: 100,
+			inputValue: '',
+			dataReceived: false,
 		};
 	}
 
-	componentDidMount() {
+	override componentDidMount() {
 		this.fetchData();
+		notification.attach(this);
 	}
 
-	componentDidUpdate(prevProps: IProps, prevState: IState) {
-		const { currentAsset, selectedEndDate } = this.state;
+	override componentDidUpdate(prevProps: IProps, prevState: IState) {
+		const { currentAsset, selectedEndDate, limit } = this.state;
 		if (
 			currentAsset !== prevState.currentAsset ||
-			selectedEndDate !== prevState.selectedEndDate
+			selectedEndDate !== prevState.selectedEndDate ||
+			limit !== prevState.limit
 		) {
 			this.fetchData();
 		}
 	}
+
+	componentWillUnmount() {
+		notification.detach(this);
+	}
+
+	update = () => {
+		const { limit, dataReceived } = this.state;
+		return { limit, dataReceived };
+	};
 
 	handleStartDate = (date: Date) => {
 		this.setState((prevState) => ({
@@ -59,9 +64,7 @@ class TimeLineClass extends Component<IProps, IState> {
 	};
 
 	handleEndDate = (date: Date): void => {
-		const { selectedStartDate } = this.state;
 		const endDate = formatDateToISOString(date);
-		this.notification.setDiff(calculateDateDiff(selectedStartDate, endDate));
 		this.setState((prevState) => ({
 			...prevState,
 			selectedEndDate: endDate,
@@ -77,20 +80,42 @@ class TimeLineClass extends Component<IProps, IState> {
 		this.setState((prevState) => ({ ...prevState, isModalActive: true }));
 	};
 
+	handleCreateChart = () => {
+		const { inputValue } = this.state;
+		this.setState((prevState) => ({
+			...prevState,
+			limit: Number(inputValue),
+		}));
+	};
+
 	handleModalClose = () => {
 		this.setState((prevState) => ({ ...prevState, isModalActive: false }));
 	};
 
+	handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+		this.setState((prevState) => ({
+			...prevState,
+			inputValue: e.target.value,
+		}));
+	};
+
 	fetchData = async () => {
 		try {
-			const { currentAsset, selectedStartDate, selectedEndDate } = this.state;
+			const { currentAsset, selectedStartDate, selectedEndDate, limit } =
+				this.state;
 			const result = await fetchHistoricalData(
 				'USDT',
 				currentAsset,
 				selectedStartDate,
-				selectedEndDate
+				selectedEndDate,
+				limit
 			);
-			this.setState((prevState) => ({ ...prevState, historicalData: result }));
+			this.setState((prevState) => ({
+				...prevState,
+				historicalData: result,
+				dataReceived: true,
+			}));
+			notification.notifyObservers();
 		} catch (e) {
 			throw new Error(e);
 		}
@@ -99,7 +124,7 @@ class TimeLineClass extends Component<IProps, IState> {
 	render() {
 		const { currentAsset, currencySymbols, isModalActive, historicalData } =
 			this.state;
-
+		const { inputValue } = this.state;
 		return (
 			<div className={styles.container}>
 				<SelectAsset
@@ -117,6 +142,21 @@ class TimeLineClass extends Component<IProps, IState> {
 					className={styles.button}
 				>
 					Select date period
+				</button>
+				<Input
+					type="input"
+					name="count days"
+					value={inputValue}
+					className={styles.button}
+					onChange={this.handleChangeInput}
+					placeholder="enter days"
+				/>
+				<button
+					type="button"
+					onClick={this.handleCreateChart}
+					className={styles.button}
+				>
+					Create chart for month
 				</button>
 				<div className={styles.containerItem}>
 					<BasicItem
@@ -139,7 +179,7 @@ class TimeLineClass extends Component<IProps, IState> {
 						/>
 					</Modal>
 				)}
-				<NotificationDisplay notification={this.notification} />
+				<NotificationComponent onDataLoaded={this.update} />
 			</div>
 		);
 	}
