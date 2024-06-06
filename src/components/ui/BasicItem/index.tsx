@@ -38,6 +38,7 @@ export const BasicItem = memo(
 					<div className={styles.containerBlockIcon}>{icon}</div>
 					<div className={styles.containerBlockData}>
 						<div
+							data-testid="open-modal-button"
 							className={getLinkClass(
 								styles.containerBlockDataUpperText,
 								styles.containerBlockDataUpperTextDark,
