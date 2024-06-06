@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 
 import { fetchHistoricalData, IHistoricalDate } from '@/api/currency';
-import { BasicItem } from '@/components/basicItem';
 import { Chart } from '@/components/Chart';
-import { DataPicker } from '@/components/DatePicker';
-import { Modal } from '@/components/modalCustom';
-import { SelectAsset } from '@/components/SelectAssets';
-import { ThemeContext } from '@/components/theme';
+import { Modal } from '@/components/Modal';
+import { ThemeContext } from '@/components/Theme';
+import { BasicItem } from '@/components/ui/BasicItem';
+import { DataPicker } from '@/components/ui/DatePicker';
+import { SelectAsset } from '@/components/ui/SelectAssets';
 import { DataAssets } from '@/constants/dataAssets';
 import { formatDateToISOString } from '@/utils/formattedDate.helper';
 import { getLinkClass } from '@/utils/getLinkClass.helper';

@@ -1,0 +1,35 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes.scss';
+.footerContainer {
+	width: 100%;
+	margin-top: $padding-xxxl;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footerWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 1460px;
+	margin: 0 auto;
+
+	.columnWrapper {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: $padding-xxl;
+	}
+
+	.column {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.rights {
+		color: $dark-grey-font;
+		font-size: $font-size-xxl;
+		font-weight: 400;
+		text-align: center;
+		width: 100%;
+	}
+}

@@ -6,6 +6,7 @@ export type BuildPaths = {
 	src: string;
 	public: string;
 	router: string;
+	components: string;
 };
 export type BuildPlatform = 'mobile' | 'desktop';
 export interface BuildsOptions {

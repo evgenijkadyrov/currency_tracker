@@ -1,4 +1,4 @@
-export const menuData = [
+export const MENU_DATA = [
 	{
 		title: 'General',
 		items: ['Market', 'Service'],

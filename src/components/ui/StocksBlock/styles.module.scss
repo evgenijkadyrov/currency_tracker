@@ -1,0 +1,28 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes.scss';
+.container {
+	font-size: $font-size-xvl;
+	margin-bottom: $padding-xvs;
+}
+.title {
+	position: relative;
+	font-size: $font-size-xvl;
+	line-height: 40px;
+	letter-spacing: 0;
+	text-align: left;
+}
+.title::after {
+	content: '';
+	position: absolute;
+	bottom: -25px;
+	left: 0;
+	width: 520px;
+	height: 2px;
+	background-color: $grey;
+}
+.wrapper {
+	display: flex;
+	justify-content: space-between;
+	margin-top: $padding-xxxl;
+	flex-wrap: wrap;
+}

@@ -1,4 +1,4 @@
-import { currencies } from '@/constants/dataAssets';
+import { currencies } from '@/utils/getCurrenciesList';
 
 export const getRandomCurrencies = () => {
 	const randomCurrencies: string[] = [];

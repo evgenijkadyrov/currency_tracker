@@ -1,0 +1,60 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes';
+
+.container {
+	width: 520px;
+	height: 153px;
+	padding: $padding-xxl $padding-xvl $padding-xxl $padding-xxl;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	border: 1px solid $grey;
+	border-radius: 8px;
+	background: $black;
+	margin-bottom: 60px;
+}
+
+.containerDark {
+	background: $light-background;
+}
+
+.containerBlock {
+	display: flex;
+	align-items: center;
+}
+
+.containerBlockIcon {
+	display: flex;
+	align-items: center;
+	width: 80px;
+	height: 80px;
+}
+
+.containerBlockData {
+	display: flex;
+	flex-direction: column;
+	margin-left: $padding-xxl;
+	width: 300px;
+}
+
+.containerBlockDataUpperText {
+	color: $light-grey-font;
+	font-size: $font-size-xvl;
+	font-weight: 400;
+	line-height: 50px;
+	letter-spacing: 0;
+	text-align: left;
+}
+.containerBlockDataUpperTextDark {
+	color: $black-font;
+}
+
+.containerBlockDataLowerText {
+	color: $grey-font;
+	font-size: $font-size-xvl;
+	line-height: 40px;
+	letter-spacing: 0;
+	text-align: left;
+}

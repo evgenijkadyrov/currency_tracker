@@ -12,6 +12,7 @@ export default (env: EnvVariables) => {
 		src: path.resolve(__dirname, 'src'),
 		router: path.resolve(__dirname, 'router'),
 		public: path.resolve(__dirname, 'public'),
+		components: path.resolve(__dirname, 'src/components'),
 	};
 	const options: BuildsOptions = {
 		port: env.port ?? 3000,

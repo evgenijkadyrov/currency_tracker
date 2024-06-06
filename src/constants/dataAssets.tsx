@@ -18,7 +18,7 @@ type DataAssetType = {
 	symbol: string;
 };
 
-interface IDataAssets {
+export interface IDataAssets {
 	[key: string]: DataAssetType;
 }
 
@@ -90,9 +90,6 @@ export const DataAssets: IDataAssets = {
 		symbol: 'ETH',
 	},
 };
-export const getAssetsList = (value: IDataAssets) =>
-	Object.keys(value).join(',');
-export const currencies = getAssetsList(DataAssets).split(',');
 
 export const dataStocks = {
 	asset_id_base: 'IFIX',

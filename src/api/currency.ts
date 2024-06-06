@@ -1,5 +1,6 @@
-import { configApi, instance } from '@/api/api';
-import { DataAssets, getAssetsList } from '@/constants/dataAssets';
+import { configApiCurrency, instanceCurrency } from '@/api/api';
+import { DataAssets } from '@/constants/dataAssets';
+import { getAssetsList } from '@/utils/getCurrenciesList';
 
 type CurrencyExchange = {
 	time: string;
@@ -36,19 +37,22 @@ export interface IReturnCurrencyHistory {
 	interval: [number, number];
 }
 export const fetchCurrencyExchange = async (assetIdQuote: string) => {
-	const currency = await instance.get<ICurrencyData>(`/${assetIdQuote}`, {
-		params: { filter_asset_id: getAssetsList(DataAssets), invert: true },
-		...configApi(),
-	});
+	const currency = await instanceCurrency.get<ICurrencyData>(
+		`/${assetIdQuote}`,
+		{
+			params: { filter_asset_id: getAssetsList(DataAssets), invert: true },
+			...configApiCurrency(),
+		}
+	);
 	return currency.data;
 };
 export const getExchange = async (
 	assetIdBase: string,
 	assetIdQuote: string
 ) => {
-	const exchange = await instance.get<IExchange>(
+	const exchange = await instanceCurrency.get<IExchange>(
 		`/${assetIdBase}/${assetIdQuote}`,
-		configApi()
+		configApiCurrency()
 	);
 	return exchange.data;
 };
@@ -59,7 +63,7 @@ export const fetchHistoricalData = async (
 	time_period_end: string,
 	limit: number
 ) => {
-	const { data } = await instance.get<IHistoricalDate[]>(
+	const { data } = await instanceCurrency.get<IHistoricalDate[]>(
 		`/${assetIdBase}/${assetIdQuote}/history`,
 		{
 			params: {
@@ -68,17 +72,9 @@ export const fetchHistoricalData = async (
 				time_start: time_period_start,
 				time_end: time_period_end,
 			},
-			...configApi(),
+			...configApiCurrency(),
 		}
 	);
-	// const formattedData = data.map((item) => ({
-	// 	date: new Date(item.time_period_start.slice(0, 10)).setHours(0, 0, 0, 0),
-	// 	open: item.rate_open,
-	// 	high: item.rate_high,
-	// 	low: item.rate_low,
-	// 	close: item.rate_close,
-	// 	interval: [item.rate_open, item.rate_close] as [number, number],
-	// }));
 
 	return data;
 };

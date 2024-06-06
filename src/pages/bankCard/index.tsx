@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import MapComponent from '@/Map';
-import { Search } from '@/Search';
+import MapComponent from '@/components/Map';
+import { Search } from '@/components/ui/Search';
 
 import * as styles from './styles.module.scss';
 

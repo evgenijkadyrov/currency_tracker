@@ -1,38 +1,20 @@
-import React, { useState } from 'react';
+import { useCalendar } from '@/hooks/useCalendar';
 
 import * as styles from './styles.module.scss';
 
-interface CalendarProps {
+export interface ICalendarProps {
 	onSelectDate: (date: Date) => void;
 }
+const weekdays = ['Sun', 'Mon', 'Th', 'Wed', 'Tus', 'Fri', 'Sat'];
 
-const Calendar = ({ onSelectDate }: CalendarProps) => {
-	const [currentDate, setCurrentDate] = useState(new Date());
-	const [selectedDay, setSelectedDay] = useState(null);
-
-	const showPreviousMonth = () => {
-		setCurrentDate((prevDate) => {
-			const prevMonth = prevDate.getMonth() - 1;
-			return new Date(prevDate.getFullYear(), prevMonth, 1);
-		});
-	};
-
-	const showNextMonth = () => {
-		setCurrentDate((prevDate) => {
-			const nextMonth = prevDate.getMonth() + 1;
-			return new Date(prevDate.getFullYear(), nextMonth, 1);
-		});
-	};
-
-	const handleDateClick = (day: number) => {
-		const selectedDate = new Date(
-			currentDate.getFullYear(),
-			currentDate.getMonth(),
-			day
-		);
-		onSelectDate(selectedDate);
-		setSelectedDay(day);
-	};
+export const Calendar = ({ onSelectDate }: ICalendarProps) => {
+	const {
+		currentDate,
+		selectedDay,
+		handleDateClick,
+		showPreviousMonth,
+		showNextMonth,
+	} = useCalendar({ onSelectDate });
 
 	const renderCalendar = () => {
 		const month = currentDate.getMonth();
@@ -40,7 +22,6 @@ const Calendar = ({ onSelectDate }: CalendarProps) => {
 		const daysInMonth = new Date(year, month + 1, 0).getDate();
 		const firstDay = new Date(year, month, 1).getDay();
 
-		const weekdays = ['Sun', 'Mon', 'Th', 'Wed', 'Tus', 'Fri', 'Sat'];
 		const weekdaysMarkup = weekdays.map((weekday) => (
 			<th key={weekday}>{weekday}</th>
 		));
@@ -102,5 +83,3 @@ const Calendar = ({ onSelectDate }: CalendarProps) => {
 
 	return <div className="calendar">{renderCalendar()}</div>;
 };
-
-export default Calendar;

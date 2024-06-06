@@ -13,6 +13,7 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@/components/*": ["./src/components/*"],
+			"@/ui/*": ["./src/components/ui/*"],
 			"@/pages/*": ["./src/pages/*"],
 			"@/actions/*": ["./src/store/actions/*"],
 			"@/reducers/*": ["./src/store/reducers/*"],

@@ -1,14 +1,14 @@
-import React, { ChangeEvent, Component } from 'react';
+import { ChangeEvent, Component } from 'react';
 
 import { fetchHistoricalData } from '@/api/currency';
-import { BasicItem } from '@/components/basicItem';
 import { Chart } from '@/components/Chart';
-import { DataPicker } from '@/components/DatePicker';
-import { Input } from '@/components/Input';
-import { Modal } from '@/components/modalCustom';
+import { Modal } from '@/components/Modal';
 import { Observer, SubjectClass } from '@/components/Notification';
 import { Notification } from '@/components/NotificationComponent';
-import { SelectAsset } from '@/components/SelectAssets';
+import { BasicItem } from '@/components/ui/BasicItem';
+import { DataPicker } from '@/components/ui/DatePicker';
+import { Input } from '@/components/ui/Input';
+import { SelectAsset } from '@/components/ui/SelectAssets';
 import { DataAssets } from '@/constants/dataAssets';
 import { IProps, IState } from '@/pages/timeLine/index.interface';
 import { formatDateToISOString } from '@/utils/formattedDate.helper';
@@ -27,7 +27,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			selectedEndDate: null,
 			isModalActive: false,
 			historicalData: [],
-			limit: 100,
+			limit: 10,
 			inputValue: '',
 			dataReceived: false,
 			showMessage: false,

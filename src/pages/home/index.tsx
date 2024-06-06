@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 
 import { fetchCurrencyExchange, ICurrencyData } from '@/api/currency';
-import { ExchangeBlock } from '@/components/exchangeBlock';
-import { Modal } from '@/components/modalCustom';
-import { StocksBlock } from '@/components/stocksBlock';
-import { ThemeContext } from '@/components/theme';
+import { ExchangeBlock } from '@/components/ExchangeBlock';
+import { Modal } from '@/components/Modal';
+import { ThemeContext } from '@/components/Theme';
+import { StocksBlock } from '@/components/ui/StocksBlock';
 import { dataStocks } from '@/constants/dataAssets';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
 

@@ -1,5 +1,20 @@
 import { IHistoricalDate } from '@/api/currency';
+import {
+	HIGH_SCALE,
+	LOW_SCALE,
+	MAX_SCALE,
+	MIN_SCALE,
+	STEP,
+} from '@/constants/gradeForScale';
 import { useFormattedValue } from '@/hooks/useFormattedValue';
+import {
+	CHART_CANDLESTICK_BLUE,
+	CHART_CANDLESTICK_GREEN,
+	CHART_CANDLESTICK_RED,
+	CHART_CROSSHAIR_ORANGE,
+	CHART_CROSSHAIR_WHITE,
+	CHART_GRID_GREY,
+} from '@/styles/colors';
 
 let crosshair: any;
 const hoverCrossHair = {
@@ -17,17 +32,17 @@ const hoverCrossHair = {
 				ctx.beginPath();
 				ctx.setLineDash([3, 3]);
 				ctx.setLineWidth = 2;
-				ctx.strokeStyle = 'orange';
+				ctx.strokeStyle = CHART_CROSSHAIR_ORANGE;
 				ctx.moveTo(line.startX, line.startY);
 				ctx.lineTo(line.endX, line.endY);
 				ctx.stroke();
 			});
-			ctx.fillStyle = 'grey';
+			ctx.fillStyle = CHART_GRID_GREY;
 			ctx.fillRect(crosshair.endX, crosshair[0].startY - 12, right, 20);
 			ctx.font = 'bold 14px';
 			ctx.textAlign = 'center';
 
-			ctx.fillStyle = 'orange';
+			ctx.fillStyle = CHART_CROSSHAIR_ORANGE;
 			ctx.fillText(
 				y.getValueForPixel(crosshair[0].startY).toFixed(3),
 				right - 20,
@@ -61,12 +76,12 @@ const hoverCrossHair = {
 };
 export const getOptions = (historicalData: IHistoricalDate[]) => {
 	const { char1, char2 } = useFormattedValue(historicalData);
-	let minScale = 0;
-	let maxScale = 1;
-	let stepSize = 0.1;
+	let minScale = MIN_SCALE;
+	let maxScale = MAX_SCALE;
+	let stepSize = STEP;
 	if (char1) {
-		minScale = Math.min(...char1.flat(2)) * 0.97;
-		maxScale = Math.max(...char2.flat(2)) * 1.03;
+		minScale = Math.min(...char1.flat(2)) * LOW_SCALE;
+		maxScale = Math.max(...char2.flat(2)) * HIGH_SCALE;
 		stepSize = minScale * 0.001;
 	}
 	return {
@@ -113,7 +128,7 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 				position: 'right' as const,
 				ticks: {
 					stepSize,
-					color: 'white',
+					color: CHART_CROSSHAIR_WHITE,
 				},
 				stacked: false,
 				min: minScale,
@@ -134,7 +149,7 @@ export const getData = (historicalData: IHistoricalDate[]) => {
 				barThickness: 1,
 				categoryPercentage: 1,
 				data: char1,
-				backgroundColor: 'rgb(81,82,208)',
+				backgroundColor: CHART_CANDLESTICK_BLUE,
 				stack: 'Stack 0',
 			},
 			{
@@ -151,8 +166,8 @@ export const getData = (historicalData: IHistoricalDate[]) => {
 						return 'rgba(0, 0, 0, 0)';
 					}
 					return ctx.raw[1] > ctx.raw[0]
-						? 'rgba(22, 199, 130)'
-						: 'rgba(234, 57, 67)';
+						? CHART_CANDLESTICK_GREEN
+						: CHART_CANDLESTICK_RED;
 				},
 				stack: 'Stack 0',
 			},
@@ -160,7 +175,7 @@ export const getData = (historicalData: IHistoricalDate[]) => {
 				barPercentage: 1,
 				barThickness: 1,
 				data: char3,
-				backgroundColor: 'rgb(81,82,208)',
+				backgroundColor: CHART_CANDLESTICK_BLUE,
 				stack: 'Stack 0',
 			},
 		],
