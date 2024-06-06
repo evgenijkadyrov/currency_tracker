@@ -1,14 +1,15 @@
 import { Logo } from '@/components/NavPanel/Logo';
 import { NavBar } from '@/components/NavPanel/NavBar';
-import * as styles from '@/components/NavPanel/styles.module.scss';
-import { ToggleTheme } from '@/components/NavPanel/ToggleTheme';
+import { Toggle } from '@/components/NavPanel/Toggle';
+
+import * as styles from './styles.module.scss';
 
 export const NavPanel = () => (
 	<div className={styles.container}>
 		<div className={styles.wrapper}>
 			<Logo />
 			<NavBar />
-			<ToggleTheme />
+			<Toggle />
 		</div>
 	</div>
 );
