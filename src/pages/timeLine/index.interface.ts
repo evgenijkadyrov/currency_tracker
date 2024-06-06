@@ -10,5 +10,6 @@ export interface IState {
 	limit: number;
 	inputValue: string;
 	dataReceived: boolean;
+	showMessage: boolean;
 }
 export type IProps = Record<string, never>;

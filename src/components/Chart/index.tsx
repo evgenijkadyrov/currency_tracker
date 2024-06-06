@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
 	BarElement,
@@ -11,7 +11,7 @@ import {
 } from 'chart.js';
 
 import { IHistoricalDate } from '@/api/currency';
-import { getData, getOptions } from '@/components/Chart/chart.config';
+import { getData, getOptions, plugins } from '@/components/Chart/chart.config';
 
 ChartJS.register(
 	CategoryScale,
@@ -26,12 +26,12 @@ interface IChart {
 	historicalData: IHistoricalDate[];
 }
 
-export const Chart = ({ historicalData }: IChart) => {
+export const Chart = memo(({ historicalData }: IChart) => {
 	const options = getOptions(historicalData);
 	const data = getData(historicalData);
 	return (
 		<div>
-			<Bar data={data} options={options} />
+			<Bar data={data} options={options} plugins={plugins} />
 		</div>
 	);
-};
+});

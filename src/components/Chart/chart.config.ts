@@ -1,31 +1,63 @@
 import { IHistoricalDate } from '@/api/currency';
+import { useFormattedValue } from '@/hooks/useFormattedValue';
 
-const useFormattedValue = (historicalData: IHistoricalDate[]) => {
-	const formattedData = historicalData.reverse();
-	const labels = formattedData.reverse().map((element) => {
-		const date = new Date(element.time_period_start);
-		return date.toLocaleDateString('en-US', { day: 'numeric' });
-	});
-	const char1: Array<Array<number>> = formattedData.map((element) => [
-		element.rate_low,
-		element.rate_close < element.rate_open
-			? element.rate_close
-			: element.rate_open,
-	]);
-	const char2: Array<Array<number>> = formattedData.map((element) => [
-		element.rate_open,
-		element.rate_close,
-	]);
-	const char3: Array<Array<number>> = formattedData.map((element) => [
-		element.rate_close,
-		element.rate_high,
-	]);
-	return {
-		labels,
-		char1,
-		char3,
-		char2,
-	};
+let crosshair: any;
+const hoverCrossHair = {
+	id: 'hoverCrossHair',
+	events: ['mouseMove'],
+	beforeDatasetsDraw(chart: any) {
+		if (crosshair) {
+			const {
+				ctx,
+				chartArea: { right },
+				scales: { y },
+			} = chart;
+			ctx.save();
+			crosshair?.forEach((line: any) => {
+				ctx.beginPath();
+				ctx.setLineDash([3, 3]);
+				ctx.setLineWidth = 2;
+				ctx.strokeStyle = 'orange';
+				ctx.moveTo(line.startX, line.startY);
+				ctx.lineTo(line.endX, line.endY);
+				ctx.stroke();
+			});
+			ctx.fillStyle = 'grey';
+			ctx.fillRect(crosshair.endX, crosshair[0].startY - 12, right, 20);
+			ctx.font = 'bold 14px';
+			ctx.textAlign = 'center';
+
+			ctx.fillStyle = 'orange';
+			ctx.fillText(
+				y.getValueForPixel(crosshair[0].startY).toFixed(3),
+				right - 20,
+				crosshair[0].startY
+			);
+			ctx.restore();
+		}
+	},
+
+	afterEvent(chart: any, args: any): void {
+		const {
+			chartArea: { left, right },
+		} = chart;
+		const yCoor = args.event.y;
+
+		if (!args.inChartArea && crosshair) {
+			crosshair = undefined;
+			args.changed = true;
+		} else if (args.inChartArea) {
+			crosshair = [
+				{
+					startX: left,
+					startY: yCoor,
+					endX: right,
+					endY: yCoor,
+				},
+			];
+			args.changed = true;
+		}
+	},
 };
 export const getOptions = (historicalData: IHistoricalDate[]) => {
 	const { char1, char2 } = useFormattedValue(historicalData);
@@ -46,9 +78,26 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 				display: true,
 				text: 'Chart of assets',
 			},
+			tooltip: {
+				callbacks: {
+					beforeBody: (ctx: any): string[] => {
+						const bodyArray = [
+							` ${ctx[0].raw[0].toFixed(3)}`,
+							` ${ctx[0].raw[1].toFixed(2)}`,
+						];
+						return bodyArray;
+					},
+					label: (): string => '',
+				},
+			},
 		},
 
 		responsive: true,
+		layout: {
+			padding: {
+				left: 10,
+			},
+		},
 		scales: {
 			x: {
 				reverse: true,
@@ -64,10 +113,8 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 				position: 'right' as const,
 				ticks: {
 					stepSize,
-
 					color: 'white',
 				},
-
 				stacked: false,
 				min: minScale,
 				max: maxScale,
@@ -76,7 +123,7 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 		},
 	};
 };
-
+export const plugins: any = [hoverCrossHair];
 export const getData = (historicalData: IHistoricalDate[]) => {
 	const { char1, char2, char3, labels } = useFormattedValue(historicalData);
 	return {
@@ -92,7 +139,7 @@ export const getData = (historicalData: IHistoricalDate[]) => {
 			},
 			{
 				barPercentage: 1,
-				barThickness: 10,
+				barThickness: 'flex' as const,
 				minBarLength: 1,
 				data: char2,
 				backgroundColor: (ctx: any): string => {

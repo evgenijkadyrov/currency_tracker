@@ -26,6 +26,7 @@
 		"@typescript-eslint/no-explicit-any": "off",
 		"import/no-unresolved": "error",
 		"import/no-webpack-loader-syntax": "off",
+		"no-param-reassign": 0,
 		"simple-import-sort/imports": [
 			"error",
 			{

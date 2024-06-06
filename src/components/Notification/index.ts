@@ -1,7 +1,7 @@
 export interface Observer {
 	update: () => void;
 }
-class SubjectClass {
+export class SubjectClass {
 	private observers: Observer[] = [];
 
 	attach(observer: Observer) {
@@ -21,5 +21,3 @@ class SubjectClass {
 		});
 	}
 }
-
-export const notification = new SubjectClass();

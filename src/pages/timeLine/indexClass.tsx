@@ -6,8 +6,8 @@ import { Chart } from '@/components/Chart';
 import { DataPicker } from '@/components/DatePicker';
 import { Input } from '@/components/Input';
 import { Modal } from '@/components/modalCustom';
-import { notification, Observer } from '@/components/Notification';
-import { NotificationComponent } from '@/components/NotificationComponent';
+import { Observer, SubjectClass } from '@/components/Notification';
+import { Notification } from '@/components/NotificationComponent';
 import { SelectAsset } from '@/components/SelectAssets';
 import { DataAssets } from '@/constants/dataAssets';
 import { IProps, IState } from '@/pages/timeLine/index.interface';
@@ -16,6 +16,8 @@ import { formatDateToISOString } from '@/utils/formattedDate.helper';
 import * as styles from './styles.module.scss';
 
 class TimeLineClass extends Component<IProps, IState> implements Observer {
+	private notification = new SubjectClass();
+
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
@@ -28,12 +30,13 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			limit: 100,
 			inputValue: '',
 			dataReceived: false,
+			showMessage: false,
 		};
 	}
 
 	override componentDidMount() {
 		this.fetchData();
-		notification.attach(this);
+		this.notification.attach(this);
 	}
 
 	override componentDidUpdate(prevProps: IProps, prevState: IState) {
@@ -48,12 +51,23 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 	}
 
 	componentWillUnmount() {
-		notification.detach(this);
+		this.notification.detach(this);
 	}
 
 	update = () => {
 		const { limit, dataReceived } = this.state;
-		return { limit, dataReceived };
+		if (limit === 30 && dataReceived) {
+			this.setState((prevState) => ({
+				...prevState,
+				showMessage: true,
+			}));
+			setTimeout(() => {
+				this.setState((prevState) => ({
+					...prevState,
+					showMessage: false,
+				}));
+			}, 2000);
+		}
 	};
 
 	handleStartDate = (date: Date) => {
@@ -85,7 +99,9 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 		this.setState((prevState) => ({
 			...prevState,
 			limit: Number(inputValue),
+			inputValue: '',
 		}));
+		this.update();
 	};
 
 	handleModalClose = () => {
@@ -115,16 +131,21 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 				historicalData: result,
 				dataReceived: true,
 			}));
-			notification.notifyObservers();
+			this.notification.notifyObservers();
 		} catch (e) {
 			throw new Error(e);
 		}
 	};
 
 	render() {
-		const { currentAsset, currencySymbols, isModalActive, historicalData } =
-			this.state;
-		const { inputValue } = this.state;
+		const {
+			currentAsset,
+			currencySymbols,
+			isModalActive,
+			historicalData,
+			showMessage,
+			inputValue,
+		} = this.state;
 		return (
 			<div className={styles.container}>
 				<SelectAsset
@@ -179,7 +200,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 						/>
 					</Modal>
 				)}
-				<NotificationComponent onDataLoaded={this.update} />
+				{showMessage && <Notification />}
 			</div>
 		);
 	}
