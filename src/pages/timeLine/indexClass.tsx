@@ -55,8 +55,8 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 	}
 
 	update = () => {
-		const { limit, dataReceived } = this.state;
-		if (limit === 30 && dataReceived) {
+		const { inputValue, dataReceived } = this.state;
+		if (inputValue === '30' && dataReceived) {
 			this.setState((prevState) => ({
 				...prevState,
 				showMessage: true,
@@ -177,7 +177,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 					onClick={this.handleCreateChart}
 					className={styles.button}
 				>
-					Create chart for month
+					Create chart
 				</button>
 				<div className={styles.containerItem}>
 					<BasicItem

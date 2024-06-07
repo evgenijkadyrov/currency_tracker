@@ -33,15 +33,15 @@ const hoverCrossHair = {
 				ctx.setLineDash([3, 3]);
 				ctx.setLineWidth = 2;
 				ctx.strokeStyle = CHART_CROSSHAIR_ORANGE;
+
 				ctx.moveTo(line.startX, line.startY);
 				ctx.lineTo(line.endX, line.endY);
 				ctx.stroke();
 			});
 			ctx.fillStyle = CHART_GRID_GREY;
 			ctx.fillRect(crosshair.endX, crosshair[0].startY - 12, right, 20);
-			ctx.font = 'bold 14px';
+			ctx.font = '18px';
 			ctx.textAlign = 'center';
-
 			ctx.fillStyle = CHART_CROSSHAIR_ORANGE;
 			ctx.fillText(
 				y.getValueForPixel(crosshair[0].startY).toFixed(3),

@@ -28,14 +28,7 @@ export interface IHistoricalDate {
 	rate_low: number;
 	rate_close: number;
 }
-export interface IReturnCurrencyHistory {
-	date: number | undefined;
-	open: number;
-	high: number;
-	low: number;
-	close: number;
-	interval: [number, number];
-}
+
 export const fetchCurrencyExchange = async (assetIdQuote: string) => {
 	const currency = await instanceCurrency.get<ICurrencyData>(
 		`/${assetIdQuote}`,

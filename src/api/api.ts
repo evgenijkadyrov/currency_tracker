@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+import { API_COINAPI } from '@/constants/api';
+
 export const configApiCurrency = () => ({
 	headers: {
 		Accept: 'text/plain',
-		'X-CoinAPI-Key': 'd03246ef-769c-473e-af19-87a9b649a86e',
+		'X-CoinAPI-Key': API_COINAPI,
 	},
 });
 export const instanceCurrency = axios.create({
