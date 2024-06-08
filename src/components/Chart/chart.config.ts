@@ -8,12 +8,12 @@ import {
 } from '@/constants/gradeForScale';
 import { useFormattedValue } from '@/hooks/useFormattedValue';
 import {
+	CHART_BACKGROUND_DARK, CHART_BACKGROUND_LIGHT,
 	CHART_CANDLESTICK_BLUE,
 	CHART_CANDLESTICK_GREEN,
 	CHART_CANDLESTICK_RED,
 	CHART_CROSSHAIR_ORANGE,
-	CHART_CROSSHAIR_WHITE,
-	CHART_GRID_GREY,
+	CHART_GRID_GREY, CHART_LIGHT_GREY,
 } from '@/styles/colors';
 
 let crosshair: any;
@@ -40,7 +40,7 @@ const hoverCrossHair = {
 			});
 			ctx.fillStyle = CHART_GRID_GREY;
 			ctx.fillRect(crosshair.endX, crosshair[0].startY - 12, right, 20);
-			ctx.font = '18px';
+			ctx.font = 'bold';
 			ctx.textAlign = 'center';
 			ctx.fillStyle = CHART_CROSSHAIR_ORANGE;
 			ctx.fillText(
@@ -74,7 +74,36 @@ const hoverCrossHair = {
 		}
 	},
 };
-export const getOptions = (historicalData: IHistoricalDate[]) => {
+const plugin = {
+	id: 'customCanvasBackgroundColor',
+	beforeDraw: (chart:any, args:any, options:any) => {
+		const {ctx} = chart;
+		ctx.save();
+		ctx.globalCompositeOperation = 'destination-over';
+		ctx.fillStyle = options.color || '#99ffff';
+		ctx.fillRect(0, 0, chart.width, chart.height);
+		ctx.restore();
+	}
+};
+const plug = {
+	id: 'getElement',
+	events:['click'],
+	beforeEvent(chart:any, args:any) {
+		const {event} = args;
+
+		if (event.type === 'click') {
+			// chart.data.datasets[1].data[0][0]=2
+			// chart.update();
+			// const xClick = chart.scales.x.getValueForPixel(event.native.offsetX);
+			// const barElement = chart.getDatasetMeta(0).data[xClick];
+		}
+	},
+
+
+
+
+};
+export const getOptions = (historicalData: IHistoricalDate[],theme: string) => {
 	const { char1, char2 } = useFormattedValue(historicalData);
 	let minScale = MIN_SCALE;
 	let maxScale = MAX_SCALE;
@@ -84,8 +113,17 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 		maxScale = Math.max(...char2.flat(2)) * HIGH_SCALE;
 		stepSize = minScale * 0.001;
 	}
+	let chartBackground;
+	if (theme === 'dark') {
+		chartBackground = CHART_BACKGROUND_DARK;
+	} else {
+		chartBackground = CHART_BACKGROUND_LIGHT;
+	}
 	return {
 		plugins: {
+			customCanvasBackgroundColor: {
+				color: chartBackground,
+			},
 			legend: {
 				display: false,
 			},
@@ -93,12 +131,15 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 				display: true,
 				text: 'Chart of assets',
 			},
+
+
 			tooltip: {
+
 				callbacks: {
 					beforeBody: (ctx: any): string[] => {
 						const bodyArray = [
-							` ${ctx[0].raw[0].toFixed(3)}`,
-							` ${ctx[0].raw[1].toFixed(2)}`,
+							`open: ${ctx[0].raw[0].toFixed(3)}`,
+							`close: ${ctx[0].raw[1].toFixed(3)}`,
 						];
 						return bodyArray;
 					},
@@ -112,6 +153,7 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 			padding: {
 				left: 10,
 			},
+			backgroundColor: chartBackground,
 		},
 		scales: {
 			x: {
@@ -128,7 +170,7 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 				position: 'right' as const,
 				ticks: {
 					stepSize,
-					color: CHART_CROSSHAIR_WHITE,
+					color:chartColors.colorScaleY
 				},
 				stacked: false,
 				min: minScale,
@@ -136,9 +178,10 @@ export const getOptions = (historicalData: IHistoricalDate[]) => {
 				stepSize,
 			},
 		},
+
 	};
 };
-export const plugins: any = [hoverCrossHair];
+export const plugins: any = [hoverCrossHair, plugin,plug];
 export const getData = (historicalData: IHistoricalDate[]) => {
 	const { char1, char2, char3, labels } = useFormattedValue(historicalData);
 	return {
@@ -181,3 +224,4 @@ export const getData = (historicalData: IHistoricalDate[]) => {
 		],
 	};
 };
+

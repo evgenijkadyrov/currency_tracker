@@ -1,6 +1,7 @@
 @import '@/styles/colors';
 @import '@/constants/sizes.scss';
 
+
 .container {
 	padding-top: $padding-xxxl;
 	padding-bottom: $padding-xvs;
@@ -11,6 +12,7 @@
 		$header-gradient-begin,
 		$header-gradient-end
 	);
+
 
 	&Content {
 		width: 50%;
@@ -61,4 +63,11 @@
 
 .updatedText {
 	font-size: $font-size-xvl;
+}
+.dark{
+	background: linear-gradient(
+									45deg,
+									$header-gradient-begin-light,
+									$header-gradient-end-light
+	);
 }

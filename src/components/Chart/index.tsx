@@ -4,14 +4,15 @@ import {
 	BarElement,
 	CategoryScale,
 	Chart as ChartJS,
-	Legend,
+Colors,
+Filler,	Legend,
 	LinearScale,
 	Title,
-	Tooltip,
-} from 'chart.js';
+	Tooltip} from 'chart.js';
 
 import { IHistoricalDate } from '@/api/currency';
 import { getData, getOptions, plugins } from '@/components/Chart/chart.config';
+import { useTheme } from '@/hooks/useTheme';
 
 ChartJS.register(
 	CategoryScale,
@@ -19,7 +20,7 @@ ChartJS.register(
 	BarElement,
 	Title,
 	Tooltip,
-	Legend
+	Legend, Filler,Colors
 );
 
 interface IChart {
@@ -27,7 +28,9 @@ interface IChart {
 }
 
 export const Chart = memo(({ historicalData }: IChart) => {
-	const options = getOptions(historicalData);
+	const {theme}=useTheme()
+
+	const options = getOptions(historicalData,theme);
 	const data = getData(historicalData);
 	return (
 		<div>

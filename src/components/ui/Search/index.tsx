@@ -1,6 +1,8 @@
-import { PureComponent, SyntheticEvent } from 'react';
+import { ContextType, PureComponent, SyntheticEvent } from 'react';
 
+import { ThemeContext } from '@/components/Theme';
 import { currencies } from '@/utils/getCurrenciesList';
+import { getLinkClass } from '@/utils/getLinkClass.helper';
 
 import * as styles from './styles.module.scss';
 
@@ -22,6 +24,10 @@ export const getFilteredSymbols = (
 		.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
 export class Search extends PureComponent<IProps, IState> {
+	static contextType = ThemeContext;
+
+	context!: ContextType<typeof ThemeContext>;
+
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
@@ -55,17 +61,17 @@ export class Search extends PureComponent<IProps, IState> {
 		const { inputValue } = this.props;
 		const symbols: string[] = currencies;
 		const filteredSymbols = getFilteredSymbols(symbols, inputValue);
-
+		const {theme} = this.context;
 		return (
 			<div>
-				<h1 className={styles.title}>Search currency in the bank</h1>
+				<h1 className={getLinkClass(styles.title, styles.titleDark,theme)}>Search currency in the bank</h1>
 				<div className={styles.inputContainer}>
 					<input
 						type="text"
 						placeholder="Сurrency search..."
 						value={inputValue}
 						onChange={this.handleChange}
-						className={styles.input}
+						className={getLinkClass(styles.input, styles.inputDarkTheme,theme)}
 						onClick={this.handleInputClick}
 					/>
 					<ul className={styles.currencyList}>

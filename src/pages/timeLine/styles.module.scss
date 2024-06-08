@@ -17,7 +17,9 @@
 	border-radius: 15px;
 
 	cursor: pointer;
-
+&Dark{
+	background-color: $input-background;
+}
 	@media screen and (max-width: 500px) {
 		padding: 5px 0;
 	}
@@ -28,11 +30,12 @@
 	margin-right: 25px;
 	font: inherit;
 	font-size: 24px;
-
 	outline: none;
 	border-radius: 15px;
-
 	cursor: pointer;
+	&Dark{
+		background-color: $input-background;
+	}
 }
 .containerItem {
 	margin-top: 30px;
