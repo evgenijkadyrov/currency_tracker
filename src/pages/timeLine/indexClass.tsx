@@ -1,6 +1,5 @@
 import { ChangeEvent, Component, ContextType } from 'react';
 
-import { fetchHistoricalData } from '@/api/currency';
 import { Chart } from '@/components/Chart';
 import { Modal } from '@/components/Modal';
 import { Observer, SubjectClass } from '@/components/Notification';
@@ -157,46 +156,49 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 		const { theme } = this.context;
 		return (
 			<div className={styles.container}>
-				<SelectAsset
-					name="timeLineOption"
-					id="TimeLineOption"
-					className={getLinkClass(styles.select, styles.selectDark, theme)}
-					defaultValue={currentAsset}
-					options={currencySymbols}
-					onChange={this.handleAsset}
-				/>
+				<div className={styles.control}>
+					<SelectAsset
+						name="timeLineOption"
+						id="TimeLineOption"
+						className={getLinkClass(styles.select, styles.selectDark, theme)}
+						defaultValue={currentAsset}
+						options={currencySymbols}
+						onChange={this.handleAsset}
+					/>
 
-				<button
-					type="button"
-					onClick={this.handleOpenModal}
-					className={getLinkClass(styles.button, styles.buttonDark, theme)}
-				>
-					Select date period
-				</button>
-				<Input
-					type="input"
-					name="count days"
-					value={inputValue}
-					className={getLinkClass(styles.button, styles.buttonDark, theme)}
-					onChange={this.handleChangeInput}
-					placeholder="enter days"
-				/>
-				<button
-					type="button"
-					onClick={this.handleCreateChart}
-					className={getLinkClass(styles.button, styles.buttonDark, theme)}
-				>
-					Create chart
-				</button>
-				<div className={styles.containerItem}>
+					<button
+						type="button"
+						onClick={this.handleOpenModal}
+						className={getLinkClass(styles.button, styles.buttonDark, theme)}
+					>
+						Select date period
+					</button>
+					<Input
+						type="input"
+						name="count days"
+						value={inputValue}
+						className={getLinkClass(styles.button, styles.buttonDark, theme)}
+						onChange={this.handleChangeInput}
+						placeholder="enter days"
+					/>
+					<button
+						type="button"
+						onClick={this.handleCreateChart}
+						className={getLinkClass(styles.button, styles.buttonDark, theme)}
+					>
+						Create chart
+					</button>
+					<div className={styles.containerItem} />
 					<BasicItem
 						key={currentAsset}
 						name={DataAssets[currentAsset].title}
 						icon={DataAssets[currentAsset].icon}
 					/>
 				</div>
-
-				<Chart historicalData={historicalData} />
+				<div className={styles.chart}>
+					<Chart historicalData={historicalData} />
+				</div>
+				{/* <Chart historicalData={historicalData} /> */}
 				{isModalActive && (
 					<Modal
 						title="some modal title"

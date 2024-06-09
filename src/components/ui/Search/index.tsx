@@ -25,6 +25,7 @@ export const getFilteredSymbols = (
 
 export class Search extends PureComponent<IProps, IState> {
 	static contextType = ThemeContext;
+
 	context!: ContextType<typeof ThemeContext>;
 
 	constructor(props: IProps) {
