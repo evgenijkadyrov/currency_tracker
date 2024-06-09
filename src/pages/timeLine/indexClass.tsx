@@ -25,8 +25,6 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 
 	static contextType = ThemeContext;
 
-
-
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
@@ -45,8 +43,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 
 	override componentDidMount() {
 		this.fetchData();
-		this.notification.attach(this)
-
+		this.notification.attach(this);
 	}
 
 	override componentDidUpdate(prevProps: IProps, prevState: IState) {
@@ -136,7 +133,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			// 	selectedEndDate,
 			// 	limit
 			// );
-			const result=dataChart
+			const result = dataChart;
 			this.setState((prevState) => ({
 				...prevState,
 				historicalData: result,
@@ -157,13 +154,13 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			showMessage,
 			inputValue,
 		} = this.state;
-		const {theme}=this.context
+		const { theme } = this.context;
 		return (
 			<div className={styles.container}>
 				<SelectAsset
 					name="timeLineOption"
 					id="TimeLineOption"
-					className={getLinkClass(styles.select, styles.selectDark,theme)}
+					className={getLinkClass(styles.select, styles.selectDark, theme)}
 					defaultValue={currentAsset}
 					options={currencySymbols}
 					onChange={this.handleAsset}
@@ -172,7 +169,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 				<button
 					type="button"
 					onClick={this.handleOpenModal}
-					className={getLinkClass(styles.button, styles.buttonDark,theme)}
+					className={getLinkClass(styles.button, styles.buttonDark, theme)}
 				>
 					Select date period
 				</button>
@@ -180,14 +177,14 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 					type="input"
 					name="count days"
 					value={inputValue}
-					className={getLinkClass(styles.button, styles.buttonDark,theme)}
+					className={getLinkClass(styles.button, styles.buttonDark, theme)}
 					onChange={this.handleChangeInput}
 					placeholder="enter days"
 				/>
 				<button
 					type="button"
 					onClick={this.handleCreateChart}
-					className={getLinkClass(styles.button, styles.buttonDark,theme)}
+					className={getLinkClass(styles.button, styles.buttonDark, theme)}
 				>
 					Create chart
 				</button>

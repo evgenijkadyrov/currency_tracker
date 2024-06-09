@@ -9,6 +9,10 @@
 .menuContainer {
 	display: flex;
 	gap: 20px;
+
+	@media screen and (max-width: 600px) {
+		flex-direction: column;
+	}
 }
 
 .menuSection {
@@ -24,6 +28,9 @@
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $padding-xxl;
+	@media screen and (max-width: 600px) {
+		margin-bottom: $padding-l;
+	}
 }
 .menuTitleLight {
 	color: $black-font;
@@ -37,6 +44,10 @@
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $padding-xxl;
+
+	@media screen and (max-width: 600px) {
+		margin-bottom: $padding-m;
+	}
 }
 .menuItemLight {
 	color: $dark-grey-font;

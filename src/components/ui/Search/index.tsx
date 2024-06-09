@@ -25,7 +25,6 @@ export const getFilteredSymbols = (
 
 export class Search extends PureComponent<IProps, IState> {
 	static contextType = ThemeContext;
-
 	context!: ContextType<typeof ThemeContext>;
 
 	constructor(props: IProps) {
@@ -61,17 +60,19 @@ export class Search extends PureComponent<IProps, IState> {
 		const { inputValue } = this.props;
 		const symbols: string[] = currencies;
 		const filteredSymbols = getFilteredSymbols(symbols, inputValue);
-		const {theme} = this.context;
+		const { theme } = this.context;
 		return (
 			<div>
-				<h1 className={getLinkClass(styles.title, styles.titleDark,theme)}>Search currency in the bank</h1>
+				<h1 className={getLinkClass(styles.title, styles.titleDark, theme)}>
+					Search currency in the bank
+				</h1>
 				<div className={styles.inputContainer}>
 					<input
 						type="text"
 						placeholder="Сurrency search..."
 						value={inputValue}
 						onChange={this.handleChange}
-						className={getLinkClass(styles.input, styles.inputDarkTheme,theme)}
+						className={getLinkClass(styles.input, styles.inputDarkTheme, theme)}
 						onClick={this.handleInputClick}
 					/>
 					<ul className={styles.currencyList}>

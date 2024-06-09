@@ -17,9 +17,9 @@
 	border-radius: 15px;
 
 	cursor: pointer;
-&Dark{
-	background-color: $input-background;
-}
+	&Dark {
+		background-color: $input-background;
+	}
 	@media screen and (max-width: 500px) {
 		padding: 5px 0;
 	}
@@ -33,7 +33,7 @@
 	outline: none;
 	border-radius: 15px;
 	cursor: pointer;
-	&Dark{
+	&Dark {
 		background-color: $input-background;
 	}
 }

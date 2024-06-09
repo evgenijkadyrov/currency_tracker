@@ -14,13 +14,33 @@
 	border-radius: 8px;
 	background: $black;
 	margin-bottom: 60px;
+	&:hover {
+		transform: scale(1.05);
+	}
+	@media screen and (max-width: 750px) {
+		padding: $padding-l;
+		justify-content: center;
+		width: 450px;
+		margin-bottom: $padding-xxl;
+	}
+
+	@media screen and (max-width: 500px) {
+		width: 250px;
+		justify-content: center;
+		height: 62px;
+		margin-bottom: $padding-l;
+	}
 }
-
-
 
 .containerBlock {
 	display: flex;
 	align-items: center;
+	@media screen and (max-width: 750px) {
+		width: 350px;
+	}
+	@media screen and (max-width: 500px) {
+		width: 200px;
+	}
 }
 
 .containerBlockIcon {
@@ -28,6 +48,10 @@
 	align-items: center;
 	width: 80px;
 	height: 80px;
+	@media screen and (max-width: 500px) {
+		width: 30px;
+		height: 30px;
+	}
 }
 
 .containerBlockData {
@@ -44,6 +68,10 @@
 	line-height: 50px;
 	letter-spacing: 0;
 	text-align: left;
+	@media screen and (max-width: 500px) {
+		font-size: 14px;
+		line-height: 30px;
+	}
 }
 .containerBlockDataUpperTextDark {
 	color: $black-font;
@@ -55,11 +83,14 @@
 	line-height: 40px;
 	letter-spacing: 0;
 	text-align: left;
+	@media screen and (max-width: 500px) {
+		font-size: 13px;
+		line-height: 30px;
+	}
 }
 .containerDark {
 	background: $light-grey-background;
 }
 .containerBlockDataLowerTextDark {
 	color: $dark-grey-font;
-
 }

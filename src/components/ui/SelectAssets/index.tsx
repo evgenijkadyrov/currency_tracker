@@ -1,7 +1,5 @@
 import { ChangeEvent } from 'react';
 
-import { useTheme } from '@/hooks/useTheme';
-
 interface ISelectProps {
 	name: string;
 	id: string;

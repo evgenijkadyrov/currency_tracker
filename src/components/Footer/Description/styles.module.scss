@@ -16,6 +16,10 @@
 		line-height: 150%;
 		letter-spacing: 0;
 		text-align: left;
+		@media screen and (max-width: 600px) {
+			display: none;
+		}
+
 		&Light {
 			color: $dark-grey-font;
 		}
@@ -36,5 +40,16 @@
 		letter-spacing: 0;
 		text-align: left;
 		margin-bottom: $padding-xxxl;
+		@media screen and (max-width: 800px) {
+			font-size: $font-size-xl;
+			font-weight: 400;
+			line-height: $font-size-xxl;
+		}
+
+		@media screen and (max-width: 500px) {
+			font-size: $font-size-s;
+			font-weight: 400;
+			line-height: $font-size-xl;
+		}
 	}
 }

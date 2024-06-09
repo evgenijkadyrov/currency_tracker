@@ -18,9 +18,9 @@
 	font-size: 38px;
 	color: $white-font;
 	text-align: center;
-&Dark{
-	color:$dark-grey-font
-}
+	&Dark {
+		color: $dark-grey-font;
+	}
 	@media screen and (max-width: 500px) {
 		font-size: 20px;
 	}

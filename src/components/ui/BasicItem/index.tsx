@@ -48,7 +48,13 @@ export const BasicItem = memo(
 							{name}
 						</div>
 						{value && (
-							<div className={getLinkClass(styles.containerBlockDataLowerText, styles.containerBlockDataLowerTextDark,theme)}>
+							<div
+								className={getLinkClass(
+									styles.containerBlockDataLowerText,
+									styles.containerBlockDataLowerTextDark,
+									theme
+								)}
+							>
 								R$ {value?.toFixed(4)}
 							</div>
 						)}

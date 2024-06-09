@@ -8,12 +8,14 @@ import {
 } from '@/constants/gradeForScale';
 import { useFormattedValue } from '@/hooks/useFormattedValue';
 import {
-	CHART_BACKGROUND_DARK, CHART_BACKGROUND_LIGHT,
+	CHART_BACKGROUND_DARK,
+	CHART_BACKGROUND_LIGHT,
 	CHART_CANDLESTICK_BLUE,
 	CHART_CANDLESTICK_GREEN,
 	CHART_CANDLESTICK_RED,
 	CHART_CROSSHAIR_ORANGE,
-	CHART_GRID_GREY, CHART_LIGHT_GREY,
+	CHART_GRID_GREY,
+	CHART_LIGHT_GREY,
 } from '@/styles/colors';
 
 let crosshair: any;
@@ -76,20 +78,20 @@ const hoverCrossHair = {
 };
 const plugin = {
 	id: 'customCanvasBackgroundColor',
-	beforeDraw: (chart:any, args:any, options:any) => {
-		const {ctx} = chart;
+	beforeDraw: (chart: any, args: any, options: any) => {
+		const { ctx } = chart;
 		ctx.save();
 		ctx.globalCompositeOperation = 'destination-over';
 		ctx.fillStyle = options.color || '#99ffff';
 		ctx.fillRect(0, 0, chart.width, chart.height);
 		ctx.restore();
-	}
+	},
 };
 const plug = {
 	id: 'getElement',
-	events:['click'],
-	beforeEvent(chart:any, args:any) {
-		const {event} = args;
+	events: ['click'],
+	beforeEvent(chart: any, args: any) {
+		const { event } = args;
 
 		if (event.type === 'click') {
 			// chart.data.datasets[1].data[0][0]=2
@@ -98,12 +100,11 @@ const plug = {
 			// const barElement = chart.getDatasetMeta(0).data[xClick];
 		}
 	},
-
-
-
-
 };
-export const getOptions = (historicalData: IHistoricalDate[],theme: string) => {
+export const getOptions = (
+	historicalData: IHistoricalDate[],
+	theme: string
+) => {
 	const { char1, char2 } = useFormattedValue(historicalData);
 	let minScale = MIN_SCALE;
 	let maxScale = MAX_SCALE;
@@ -132,9 +133,7 @@ export const getOptions = (historicalData: IHistoricalDate[],theme: string) => {
 				text: 'Chart of assets',
 			},
 
-
 			tooltip: {
-
 				callbacks: {
 					beforeBody: (ctx: any): string[] => {
 						const bodyArray = [
@@ -170,7 +169,7 @@ export const getOptions = (historicalData: IHistoricalDate[],theme: string) => {
 				position: 'right' as const,
 				ticks: {
 					stepSize,
-					color:chartColors.colorScaleY
+					color: CHART_LIGHT_GREY,
 				},
 				stacked: false,
 				min: minScale,
@@ -178,10 +177,9 @@ export const getOptions = (historicalData: IHistoricalDate[],theme: string) => {
 				stepSize,
 			},
 		},
-
 	};
 };
-export const plugins: any = [hoverCrossHair, plugin,plug];
+export const plugins: any = [hoverCrossHair, plugin, plug];
 export const getData = (historicalData: IHistoricalDate[]) => {
 	const { char1, char2, char3, labels } = useFormattedValue(historicalData);
 	return {
@@ -224,4 +222,3 @@ export const getData = (historicalData: IHistoricalDate[]) => {
 		],
 	};
 };
-
