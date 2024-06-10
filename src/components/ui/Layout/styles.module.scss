@@ -1,0 +1,13 @@
+@import '@/styles/colors.scss';
+.wrapper {
+	max-width: 1460px;
+	margin: 0 auto;
+}
+.container {
+	background-color: $dark-background;
+	color: $white-font;
+	&Dark {
+		background-color: $light-background;
+		color: $black-font;
+	}
+}

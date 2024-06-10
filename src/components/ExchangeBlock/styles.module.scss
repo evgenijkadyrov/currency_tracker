@@ -1,0 +1,105 @@
+@import '@/styles/colors';
+@import '@/constants/sizes.scss';
+
+.title {
+	color: $white-font;
+	margin-bottom: $padding-l;
+}
+.modalWrapper {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb($black, 0.5);
+}
+
+.modal {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	padding: $padding-xxxl;
+	border-radius: 15%;
+	background-color: $dark-background;
+
+	@media screen and (max-width: 500px) {
+		width: 100%;
+		border-radius: 0;
+		padding: $padding-xxl $padding-l;
+	}
+}
+
+.row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: $padding-l;
+}
+
+.input {
+	width: 100%;
+	padding: $padding-m $padding-l;
+	border: none;
+	margin-bottom: $padding-l;
+	margin-right: $padding-l;
+	font: inherit;
+	font-size: $font-size-xxl;
+
+	outline: none;
+	border-radius: 15px;
+
+	@media screen and (max-width: 500px) {
+		width: 60%;
+		padding: $padding-sl $padding-m;
+	}
+}
+
+.symbol {
+	font-size: $font-size-xxl;
+	color: $light-grey-font;
+}
+
+.closeButton {
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+
+	padding: $padding-m $padding-l;
+	border: none;
+	font: inherit;
+	font-size: 24px;
+	outline: none;
+	border-radius: 15px;
+	transform: translateX(-50%);
+	cursor: pointer;
+	transition: all 0.3s linear;
+
+	&:hover {
+		transform: translateX(-50%) scale(1.05);
+	}
+}
+
+.select {
+	padding: $padding-m 0;
+	border: none;
+	margin-right: $padding-xl;
+	font: inherit;
+	font-size: $font-size-xxl;
+	outline: none;
+	border-radius: 15px;
+	cursor: pointer;
+
+	@media screen and (max-width: 500px) {
+		padding: $padding-sl 0;
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type='number'] {
+	appearance: textfield;
+	-moz-appearance: textfield;
+}

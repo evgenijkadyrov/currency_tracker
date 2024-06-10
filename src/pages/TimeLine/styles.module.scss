@@ -1,0 +1,60 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes.scss';
+.container {
+	padding: 1px;
+}
+.containerDark {
+	color: $black-font;
+	background-color: $light-background;
+}
+.control {
+	gap: 10px;
+	@media screen and (max-width: 700px) {
+		flex-direction: column;
+	}
+}
+.select {
+	padding: $padding-m $padding-m;
+	border: none;
+	margin-bottom: $padding-m;
+	margin-right: $padding-xl;
+	font: inherit;
+	font-size: $font-size-xxl;
+	outline: none;
+	border-radius: 15px;
+	cursor: pointer;
+	&:hover {
+		transform: scale(1.05);
+	}
+
+	&Dark {
+		background-color: $input-background;
+	}
+	@media screen and (max-width: 500px) {
+		padding: $padding-sl 0;
+	}
+}
+.button {
+	padding: $padding-m $padding-m;
+	border: none;
+	margin-right: $font-size-xxl;
+	font: inherit;
+	margin-bottom: $padding-m;
+	font-size: $font-size-xxl;
+	outline: none;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	&:hover {
+		transform: scale(1.05);
+	}
+	&Dark {
+		background-color: $input-background;
+	}
+}
+.containerItem {
+	margin-top: $padding-xxl;
+}
+.chart {
+	padding: $padding-m;
+}

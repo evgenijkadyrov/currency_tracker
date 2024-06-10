@@ -1,0 +1,96 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes';
+
+.container {
+	width: 520px;
+	height: 153px;
+	padding: $padding-xxl $padding-xvl $padding-xxl $padding-xxl;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	box-sizing: border-box;
+	border: 1px solid $grey;
+	border-radius: 8px;
+	background: $black;
+	margin-bottom: 60px;
+	&:hover {
+		transform: scale(1.05);
+	}
+	@media screen and (max-width: 750px) {
+		padding: $padding-l;
+		justify-content: center;
+		width: 450px;
+		margin-bottom: $padding-xxl;
+	}
+
+	@media screen and (max-width: 500px) {
+		width: 250px;
+		justify-content: center;
+		height: 62px;
+		margin-bottom: $padding-l;
+	}
+}
+
+.containerBlock {
+	display: flex;
+	align-items: center;
+	@media screen and (max-width: 750px) {
+		width: 350px;
+	}
+	@media screen and (max-width: 500px) {
+		width: 200px;
+	}
+}
+
+.containerBlockIcon {
+	display: flex;
+	align-items: center;
+	width: 80px;
+	height: 80px;
+	@media screen and (max-width: 500px) {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+.containerBlockData {
+	display: flex;
+	flex-direction: column;
+	margin-left: $padding-xxl;
+	width: 300px;
+}
+
+.containerBlockDataUpperText {
+	color: $light-grey-font;
+	font-size: $font-size-xvl;
+	font-weight: 400;
+	line-height: 50px;
+	letter-spacing: 0;
+	text-align: left;
+	@media screen and (max-width: 500px) {
+		font-size: 14px;
+		line-height: 30px;
+	}
+}
+.containerBlockDataUpperTextDark {
+	color: $black-font;
+}
+
+.containerBlockDataLowerText {
+	color: $grey-font;
+	font-size: $font-size-xvl;
+	line-height: 40px;
+	letter-spacing: 0;
+	text-align: left;
+	@media screen and (max-width: 500px) {
+		font-size: 13px;
+		line-height: 30px;
+	}
+}
+.containerDark {
+	background: $light-grey-background;
+}
+.containerBlockDataLowerTextDark {
+	color: $dark-grey-font;
+}

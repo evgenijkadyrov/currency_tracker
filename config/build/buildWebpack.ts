@@ -33,6 +33,7 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 			alias: {
 				'@': paths.src,
 				'@router': paths.src,
+				'@components/*': paths.components,
 			},
 		},
 		plugins: buildPlugins(options),

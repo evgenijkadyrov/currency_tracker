@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BuildsOptions } from './types';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import { buildBabelLoader } from './buildBabelLoader';
+
 export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 	const isDev = options.mode === 'development';
 	const cssLoaderWithModules = {
@@ -18,20 +19,12 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 		type: 'asset/resource',
 	};
 	const svgrLoader = {
-		test: /\.svg$/,
+		test: /\.svg$/i,
 		use: [
 			{
 				loader: '@svgr/webpack',
 				options: {
 					icon: true,
-					svgoConfig: {
-						plugins: [
-							{
-								name: 'convertColors',
-								params: { currentColor: true },
-							},
-						],
-					},
 				},
 			},
 		],

@@ -1,0 +1,39 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes.scss';
+.menuContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	max-width: 90%;
+	height: 100%;
+	background-color: $dark-background;
+	text-align: left;
+	padding: 132px 112px 32px 32px;
+	z-index: 1000;
+	transition: transform 0.3s ease-in-out;
+	&Dark {
+		background-color: $light-background;
+	}
+
+	&.closed {
+		transform: translateX(-100%);
+	}
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: none;
+	z-index: 1000;
+
+	&.open {
+		display: block;
+	}
+}

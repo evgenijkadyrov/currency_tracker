@@ -1,0 +1,47 @@
+@import '@/styles/colors.scss';
+@import '@/constants/sizes.scss';
+.contactBlock {
+	display: flex;
+
+	@media screen and (max-width: 700px) {
+		flex-direction: column;
+	}
+
+	&Content {
+		background-color: $dark-grey;
+		gap: 20px;
+		width: 350px;
+		padding: $padding-xl;
+		margin: $padding-xl;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border-radius: 10px;
+
+		&Dark {
+			background-color: $light-grey-background;
+		}
+
+		&Title {
+			font-size: $font-size-xl;
+		}
+
+		&Text {
+			color: $grey-font;
+
+			&Dark {
+				color: $dark-grey;
+			}
+		}
+
+		&Link {
+			color: $green;
+			transition: all 0.3s linear;
+		}
+
+		&Link:hover {
+			cursor: pointer;
+		}
+	}
+}

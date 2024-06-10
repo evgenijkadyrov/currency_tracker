@@ -1,0 +1,151 @@
+@import '@/styles/colors';
+@import '@/constants/sizes.scss';
+
+.container {
+	padding-top: $padding-xxxl;
+	padding-bottom: $padding-xvs;
+	display: flex;
+	align-items: center;
+	background: linear-gradient(
+		45deg,
+		$header-gradient-begin,
+		$header-gradient-end
+	);
+
+	&Content {
+		width: 50%;
+		@media screen and (max-width: 800px) {
+			width: 100%;
+		}
+	}
+
+	&Text {
+		margin-left: auto;
+		max-width: 60%;
+		text-align: center;
+		font-size: $font-size-xxl;
+		@media screen and (max-width: 800px) {
+			margin: 0 auto;
+		}
+
+		@media screen and (max-width: 500px) {
+			font-size: 14px;
+		}
+	}
+
+	&Title {
+		padding-right: $padding-xxxl;
+		font-weight: 600;
+		font-size: $font-size-xxvl;
+		text-align: right;
+
+		-webkit-text-fill-color: transparent;
+		-webkit-background-clip: text;
+
+		background-image: linear-gradient(
+			to right,
+			$title-gradient-begin,
+			$title-gradient-middle,
+			$title-gradient-end
+		);
+		@media screen and (max-width: 800px) {
+			padding-right: 0;
+			text-align: center;
+		}
+
+		@media screen and (max-width: 700px) {
+			font-size: 50px;
+		}
+
+		@media screen and (max-width: 600px) {
+			font-size: $font-size-xvl;
+			padding: 0 30px;
+		}
+
+		@media screen and (max-width: 500px) {
+			font-size: $font-size-xxl;
+		}
+	}
+
+	&ImageBlock {
+		width: 50%;
+		@media screen and (max-width: 800px) {
+			width: 0;
+		}
+	}
+
+	&Image {
+		width: 300px;
+		height: 300px;
+
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+	}
+	@media screen and (max-width: 600px) {
+		padding-bottom: 40px;
+	}
+}
+
+.updatedRow {
+	width: 480px;
+	margin: 50px auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@media screen and (max-width: 700px) {
+		width: 400px;
+	}
+	@media screen and (max-width: 600px) {
+		width: 100%;
+		justify-content: center;
+		gap: 20px;
+	}
+}
+.updatedPulseButton {
+	display: block;
+	width: 30px;
+	height: 30px;
+	border: none;
+	border-radius: 50%;
+	background: $green;
+	cursor: pointer;
+	box-shadow: 0 0 0 0 rgba($green, 0.5);
+	animation: pulse 1.5s infinite;
+
+	@media screen and (max-width: 600px) {
+		width: 15px;
+		height: 15px;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.9);
+	}
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba($green, 0.5);
+	}
+	100% {
+		transform: scale(0.9);
+		box-shadow: 0 0 0 0 rgba($green, 0);
+	}
+}
+.updatedText {
+	font-size: $font-size-xvl;
+	@media screen and (max-width: 700px) {
+		font-size: 28px;
+	}
+
+	@media screen and (max-width: 500px) {
+		font-size: 14px;
+	}
+}
+.dark {
+	background: linear-gradient(
+		45deg,
+		$header-gradient-begin-light,
+		$header-gradient-end-light
+	);
+}

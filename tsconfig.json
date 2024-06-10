@@ -9,10 +9,12 @@
 		"esModuleInterop": true,
 		"jsx": "react-jsx",
 		"allowJs": true,
-		"moduleResolution": "node",
+		"moduleResolution": "Node",
+		"types": ["cypress", "node"],
 		"paths": {
 			"@/*": ["./src/*"],
 			"@/components/*": ["./src/components/*"],
+			"@/ui/*": ["./src/components/ui/*"],
 			"@/pages/*": ["./src/pages/*"],
 			"@/actions/*": ["./src/store/actions/*"],
 			"@/reducers/*": ["./src/store/reducers/*"],

@@ -6,6 +6,7 @@ import { BuildsOptions } from './types';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import path from 'path';
 
 export const buildPlugins = ({
@@ -18,13 +19,13 @@ export const buildPlugins = ({
 	const isDev = mode === 'development';
 	const plugins: Configuration['plugins'] = [
 		new HtmlWebpackPlugin({ template: paths.html }),
-		new DefinePlugin({
+		new webpack.DefinePlugin({
 			platform: JSON.stringify(platform),
 		}),
 		new ForkTsCheckerWebpackPlugin(),
 		new ReactRefreshWebpackPlugin(),
+		new Dotenv({ systemvars: true }),
 	];
-
 	if (isProd) {
 		plugins.push(
 			new MiniCssExtractPlugin({
