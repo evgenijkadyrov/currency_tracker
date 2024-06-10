@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import MapComponent from '@/components/Map';
 import { Search } from '@/components/ui/Search';
@@ -9,7 +9,7 @@ interface IState {
 	inputValue: string;
 }
 interface IProps {}
-export class BankCard extends Component<IProps, IState> {
+class BankCard extends Component<IProps, IState> {
 	constructor(props: IProps) {
 		super(props);
 		this.state = {
@@ -31,3 +31,4 @@ export class BankCard extends Component<IProps, IState> {
 		);
 	}
 }
+export default BankCard;

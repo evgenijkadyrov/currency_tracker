@@ -1,28 +1,34 @@
 @import '@/styles/colors.scss';
 @import '@/constants/sizes.scss';
+
 .container {
-	padding: 1px;
+	padding: $sizes-sl;
 }
+
 .containerDark {
 	color: $black-font;
 	background-color: $light-background;
 }
+
 .control {
 	gap: 10px;
+
 	@media screen and (max-width: 700px) {
 		flex-direction: column;
 	}
 }
+
 .select {
-	padding: $padding-m $padding-m;
+	padding: $sizes-m $sizes-m;
 	border: none;
-	margin-bottom: $padding-m;
-	margin-right: $padding-xl;
+	margin-bottom: $sizes-m;
+	margin-right: $sizes-xl;
 	font: inherit;
 	font-size: $font-size-xxl;
 	outline: none;
 	border-radius: 15px;
 	cursor: pointer;
+
 	&:hover {
 		transform: scale(1.05);
 	}
@@ -30,31 +36,37 @@
 	&Dark {
 		background-color: $input-background;
 	}
+
 	@media screen and (max-width: 500px) {
-		padding: $padding-sl 0;
+		padding: $sizes-sl 0;
 	}
 }
+
 .button {
-	padding: $padding-m $padding-m;
+	padding: $sizes-m $sizes-m;
 	border: none;
 	margin-right: $font-size-xxl;
 	font: inherit;
-	margin-bottom: $padding-m;
+	margin-bottom: $sizes-m;
 	font-size: $font-size-xxl;
 	outline: none;
 	border-radius: 15px;
 	cursor: pointer;
 	transition: background-color 0.3s;
+
 	&:hover {
 		transform: scale(1.05);
 	}
+
 	&Dark {
 		background-color: $input-background;
 	}
 }
+
 .containerItem {
-	margin-top: $padding-xxl;
+	margin-top: $sizes-xxl;
 }
+
 .chart {
-	padding: $padding-m;
+	padding: $sizes-m;
 }

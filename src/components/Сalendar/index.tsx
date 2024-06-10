@@ -1,3 +1,4 @@
+import { WEEKENDS } from '@/constants/weekDay';
 import { useCalendar } from '@/hooks/useCalendar';
 
 import * as styles from './styles.module.scss';
@@ -5,7 +6,6 @@ import * as styles from './styles.module.scss';
 export interface ICalendarProps {
 	onSelectDate: (date: Date) => void;
 }
-const weekdays = ['Sun', 'Mon', 'Th', 'Wed', 'Tus', 'Fri', 'Sat'];
 
 export const Calendar = ({ onSelectDate }: ICalendarProps) => {
 	const {
@@ -22,7 +22,7 @@ export const Calendar = ({ onSelectDate }: ICalendarProps) => {
 		const daysInMonth = new Date(year, month + 1, 0).getDate();
 		const firstDay = new Date(year, month, 1).getDay();
 
-		const weekdaysMarkup = weekdays.map((weekday) => (
+		const weekdaysMarkup = WEEKENDS.map((weekday) => (
 			<th key={weekday}>{weekday}</th>
 		));
 

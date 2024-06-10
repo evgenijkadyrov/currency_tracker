@@ -1,3 +1,3 @@
 import { lazy } from 'react';
 
-export const LazyTimeLine = lazy(() => import('./index'));
+export const LazyTimeLine = lazy(() => import('./indexClass'));

@@ -31,7 +31,7 @@ export class ErrorBoundary extends Component<
 
 	render() {
 		const { error } = this.state;
-		const { children } = this.props; // Unused prop warning fixed
+		const { children } = this.props;
 		return (
 			<div>
 				{error ? (

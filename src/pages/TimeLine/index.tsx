@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { fetchHistoricalData, IHistoricalDate } from '@/api/currency';
 import { Chart } from '@/components/Chart';

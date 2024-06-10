@@ -3,8 +3,9 @@
 
 .title {
 	color: $white-font;
-	margin-bottom: $padding-l;
+	margin-bottom: $sizes-l;
 }
+
 .modalWrapper {
 	position: fixed;
 	inset: 0;
@@ -18,14 +19,14 @@
 	position: relative;
 	width: 500px;
 	height: 500px;
-	padding: $padding-xxxl;
-	border-radius: 15%;
+	padding: $sizes-xxxl;
+	border-radius: 10px;
 	background-color: $dark-background;
 
 	@media screen and (max-width: 500px) {
 		width: 100%;
 		border-radius: 0;
-		padding: $padding-xxl $padding-l;
+		padding: $sizes-xxl $sizes-l;
 	}
 }
 
@@ -33,24 +34,27 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: $padding-l;
+	margin-bottom: $sizes-l;
 }
 
 .input {
 	width: 100%;
-	padding: $padding-m $padding-l;
+	padding: $sizes-m $sizes-l;
 	border: none;
-	margin-bottom: $padding-l;
-	margin-right: $padding-l;
+	margin-bottom: $sizes-l;
+	margin-right: $sizes-l;
 	font: inherit;
 	font-size: $font-size-xxl;
-
 	outline: none;
 	border-radius: 15px;
 
+	&:disabled {
+		background-color: $light-background;
+	}
+
 	@media screen and (max-width: 500px) {
 		width: 60%;
-		padding: $padding-sl $padding-m;
+		padding: $sizes-sl $sizes-m;
 	}
 }
 
@@ -63,8 +67,7 @@
 	position: absolute;
 	bottom: 10%;
 	left: 50%;
-
-	padding: $padding-m $padding-l;
+	padding: $sizes-m $sizes-l;
 	border: none;
 	font: inherit;
 	font-size: 24px;
@@ -80,9 +83,9 @@
 }
 
 .select {
-	padding: $padding-m 0;
+	padding: $sizes-m 0;
 	border: none;
-	margin-right: $padding-xl;
+	margin-right: $sizes-xl;
 	font: inherit;
 	font-size: $font-size-xxl;
 	outline: none;
@@ -90,7 +93,7 @@
 	cursor: pointer;
 
 	@media screen and (max-width: 500px) {
-		padding: $padding-sl 0;
+		padding: $sizes-sl 0;
 	}
 }
 

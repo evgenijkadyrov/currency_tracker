@@ -1,6 +1,3 @@
-import React from 'react';
-
-import { AppRoutes } from '@/constants/appRoutes';
 import { useTheme } from '@/hooks/useTheme';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
 
@@ -32,8 +29,11 @@ export const ContactChartItem = ({ title, text, link }: IContactChartItem) => {
 				{' '}
 				{text}
 			</p>
-			<a className={styles.contactBlockContentLink} href={AppRoutes.CONTACTS}>
-				{link}{' '}
+			<a
+				className={styles.contactBlockContentLink}
+				href="https://currency-tracker-three.vercel.app"
+			>
+				{link}
 			</a>
 		</div>
 	);

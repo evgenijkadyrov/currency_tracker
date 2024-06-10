@@ -10,24 +10,24 @@
 	&Title {
 		font-size: $font-size-xvl;
 		font-weight: 400;
-		line-height: 150%;
+		line-height: $font-size-xxvl;
 		letter-spacing: 0;
 		text-align: left;
-		margin-bottom: $padding-xxl;
+		margin-bottom: $sizes-xxl;
 
 		@media screen and (max-width: 600px) {
 			font-size: $font-size-xl;
-			margin-bottom: $padding-l;
+			margin-bottom: $sizes-l;
 		}
 	}
 
 	&SubTitle {
 		font-weight: 400;
 		font-size: $font-size-xl;
-		margin-bottom: $padding-xxxl;
+		margin-bottom: $sizes-xxxl;
 		@media screen and (max-width: 600px) {
 			font-size: $font-size-l;
-			margin-bottom: $padding-l;
+			margin-bottom: $sizes-l;
 		}
 	}
 
@@ -46,7 +46,7 @@
 }
 
 .row {
-	padding: $padding-xxl 0;
+	padding: $sizes-xxl 0;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: flex-start;
@@ -54,7 +54,6 @@
 
 .link {
 	font-size: $font-size-xl;
-	//color: $black-font;
 	transition: all 0.3s linear;
 
 	&::after {
@@ -62,8 +61,6 @@
 		display: block;
 		width: 0;
 		height: 2px;
-
-		//background: $black-font;
 		transition: all 0.3s linear;
 	}
 
@@ -85,7 +82,7 @@
 }
 
 .list {
-	margin-top: $padding-xxl;
+	margin-top: $sizes-xxl;
 	display: flex;
 	gap: 50px;
 }

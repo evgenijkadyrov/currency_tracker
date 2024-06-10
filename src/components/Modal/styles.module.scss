@@ -21,7 +21,7 @@
 	position: relative;
 	background: $dark-grey;
 	border-radius: 15px;
-	padding: $padding-m $padding-xxl $padding-xxl $padding-xxl;
+	padding: $sizes-m $sizes-xxl $sizes-xxl $sizes-xxl;
 	color: $black;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .title {
-	margin: 0 0 $padding-m;
+	margin: 0 0 $sizes-m;
 	font-style: normal;
 	font-weight: 800;
 	font-size: $font-size-l;

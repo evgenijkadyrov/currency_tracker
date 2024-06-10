@@ -13,7 +13,7 @@
 	&Text {
 		color: $white-font;
 		font-size: $font-size-xxl;
-		line-height: 150%;
+		line-height: $font-size-xvl;
 		letter-spacing: 0;
 		text-align: left;
 		@media screen and (max-width: 600px) {
@@ -39,7 +39,7 @@
 		line-height: 40px;
 		letter-spacing: 0;
 		text-align: left;
-		margin-bottom: $padding-xxxl;
+		margin-bottom: $sizes-xxxl;
 		@media screen and (max-width: 800px) {
 			font-size: $font-size-xl;
 			font-weight: 400;

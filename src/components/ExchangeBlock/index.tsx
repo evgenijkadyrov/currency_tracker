@@ -53,6 +53,7 @@ export const ExchangeBlock = memo(({ currentSymbol }: IExchangeBlock) => {
 			</div>
 			<h4 className={styles.title}>Result of exchange asset: </h4>
 			<Input
+				disabled
 				type="number"
 				name="resultExchange"
 				value={resultOfExchange}

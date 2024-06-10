@@ -17,7 +17,3 @@ export interface GeoJSONFeature {
 export interface FeatureWithCurrencies extends GeoJSONFeature {
 	currencies: string[];
 }
-export interface GeoJSONFeatureCollection {
-	type: string;
-	features: GeoJSONFeature[];
-}

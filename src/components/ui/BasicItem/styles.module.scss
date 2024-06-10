@@ -4,7 +4,7 @@
 .container {
 	width: 520px;
 	height: 153px;
-	padding: $padding-xxl $padding-xvl $padding-xxl $padding-xxl;
+	padding: $sizes-xxl $sizes-xvl $sizes-xxl $sizes-xxl;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -13,22 +13,24 @@
 	border: 1px solid $grey;
 	border-radius: 8px;
 	background: $black;
-	margin-bottom: 60px;
+	margin-bottom: $sizes-xxxl;
+
 	&:hover {
 		transform: scale(1.05);
 	}
+
 	@media screen and (max-width: 750px) {
-		padding: $padding-l;
+		padding: $sizes-l;
 		justify-content: center;
 		width: 450px;
-		margin-bottom: $padding-xxl;
+		margin-bottom: $sizes-xxl;
 	}
 
 	@media screen and (max-width: 500px) {
 		width: 250px;
 		justify-content: center;
 		height: 62px;
-		margin-bottom: $padding-l;
+		margin-bottom: $sizes-l;
 	}
 }
 
@@ -57,7 +59,7 @@
 .containerBlockData {
 	display: flex;
 	flex-direction: column;
-	margin-left: $padding-xxl;
+	margin-left: $sizes-xxl;
 	width: 300px;
 }
 
@@ -69,10 +71,11 @@
 	letter-spacing: 0;
 	text-align: left;
 	@media screen and (max-width: 500px) {
-		font-size: 14px;
-		line-height: 30px;
+		font-size: $font-size-m;
+		line-height: $font-size-xvl;
 	}
 }
+
 .containerBlockDataUpperTextDark {
 	color: $black-font;
 }
@@ -84,13 +87,15 @@
 	letter-spacing: 0;
 	text-align: left;
 	@media screen and (max-width: 500px) {
-		font-size: 13px;
-		line-height: 30px;
+		font-size: $font-size-s;
+		line-height: $font-size-xxl;
 	}
 }
+
 .containerDark {
 	background: $light-grey-background;
 }
+
 .containerBlockDataLowerTextDark {
 	color: $dark-grey-font;
 }

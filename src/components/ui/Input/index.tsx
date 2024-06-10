@@ -7,6 +7,7 @@ interface IInputProps {
 	className: string;
 	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 	placeholder?: string;
+	disabled?: boolean;
 }
 
 export const Input = ({
@@ -16,6 +17,7 @@ export const Input = ({
 	className,
 	onChange,
 	placeholder = 'placeholder',
+	disabled = false,
 }: IInputProps) => {
 	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		onChange(event);
@@ -23,6 +25,7 @@ export const Input = ({
 
 	return (
 		<input
+			disabled={disabled}
 			type={type}
 			name={name}
 			value={value}
