@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/Input';
 import { SelectAsset } from '@/components/ui/SelectAssets';
 import { dataChart } from '@/constants/_daforChart';
 import { DataAssets } from '@/constants/dataAssets';
-import { IProps, IState } from '@/pages/timeLine/index.interface';
+import { IProps, IState } from '@/pages/TimeLine/index.interface';
 import { formatDateToISOString } from '@/utils/formattedDate.helper';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
 
