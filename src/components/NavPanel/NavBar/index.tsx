@@ -11,10 +11,10 @@ export const NavBar = () => {
 
 	return (
 		<div className={styles.containerNavList}>
-			{dataNavPanel.map((el) => (
+			{dataNavPanel.map(({ id, dest, title }) => (
 				<Link
-					key={el.id}
-					to={el.dest}
+					key={id}
+					to={dest}
 					className={getLinkClass(
 						styles.containerNavItem,
 						styles.containerNavItemLight,
@@ -22,7 +22,7 @@ export const NavBar = () => {
 					)}
 				>
 					{' '}
-					{el.title}{' '}
+					{title}{' '}
 				</Link>
 			))}
 		</div>

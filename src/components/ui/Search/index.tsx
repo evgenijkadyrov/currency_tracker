@@ -1,4 +1,4 @@
-import React, { PureComponent, SyntheticEvent } from 'react';
+import { PureComponent, SyntheticEvent } from 'react';
 
 import { ThemeContext, ThemeContextProp } from '@/components/Theme';
 import { currencies } from '@/utils/getCurrenciesList';

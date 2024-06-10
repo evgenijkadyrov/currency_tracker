@@ -53,7 +53,7 @@ const Home = () => {
 			<StocksBlock
 				title="Stocks"
 				data={dataStocks}
-				setModalOpen={handleModalOpen}
+				setModalOpen={() => {}}
 				setSymbol={handleSymbol}
 			/>
 			<StocksBlock

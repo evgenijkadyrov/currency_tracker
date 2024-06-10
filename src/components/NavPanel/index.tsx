@@ -41,15 +41,14 @@ export const NavPanel = () => {
 					>
 						<CloseIcon height={36} width={36} />
 					</div>
-					{dataNavPanel.map((el) => (
+					{dataNavPanel.map(({ title, id, dest }) => (
 						<Link
-							key={el.id}
-							to={el.dest}
+							key={id}
+							to={dest}
 							className={getLinkClass(styles.link, styles.linkDark, theme)}
 							onClick={onClose}
 						>
-							{' '}
-							{el.title}{' '}
+							{title}
 						</Link>
 					))}
 				</BurgerMenu>

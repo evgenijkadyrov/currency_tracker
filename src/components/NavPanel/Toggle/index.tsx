@@ -19,8 +19,3 @@ export const Toggle = () => {
 		</div>
 	);
 };
-// <div className={styles.containerSelectorTheme}>
-// 	<button type="button" onClick={toggleTheme}>
-// 		Switch to {theme === 'light' ? 'dark' : 'light'} mode
-// 	</button>
-// {/*</div>*/}

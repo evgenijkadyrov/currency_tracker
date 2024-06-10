@@ -1,4 +1,6 @@
 @import '@/styles/colors.scss';
+@import '@/constants/sizes.scss';
+
 .calendar {
 	width: 300px;
 	border: 1px solid $light-grey;
@@ -9,13 +11,13 @@
 		border-collapse: collapse;
 
 		th {
-			padding: 8px;
+			padding: $sizes-m;
 			background-color: $light-background;
 			text-align: center;
 		}
 
 		td {
-			padding: 8px;
+			padding: $sizes-m;
 			text-align: center;
 			cursor: pointer;
 			color: $white;
@@ -30,7 +32,7 @@
 		}
 
 		.selected {
-			background-color: #007bff;
+			background-color: $green;
 			color: $white;
 			font-weight: bold;
 		}
@@ -40,9 +42,9 @@
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
-		font-size: 14px;
-		margin: 0 4px;
-		padding: 4px;
+		font-size: $font-size-m;
+		margin: 0 $sizes-sl;
+		padding: $sizes-sl;
 		outline: none;
 
 		&:hover {

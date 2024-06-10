@@ -6,19 +6,19 @@ import {
 
 import { Layout } from '@/components/ui/Layout';
 import { AppRoutes } from '@/constants/appRoutes';
-import { BankCard } from '@/pages/BankCard';
-import Contacts from '@/pages/Contact';
-import Home from '@/pages/Home';
-import TimeLineClass from '@/pages/TimeLine/indexClass';
+import { LazyBank } from '@/pages/BankCard/index.lazy';
+import { LazyContact } from '@/pages/Contact/index.lazy';
+import { LazyHome } from '@/pages/Home/index.lazy';
+import { LazyTimeLine } from '@/pages/TimeLine/index.lazy';
 
 export const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path={AppRoutes.HOME} errorElement="error">
 			<Route element={<Layout />}>
-				<Route index element={<Home />} />
-				<Route path={AppRoutes.TIMELINE} element={<TimeLineClass />} />
-				<Route path={AppRoutes.BANK_CARD} element={<BankCard />} />
-				<Route path={AppRoutes.CONTACTS} element={<Contacts />} />
+				<Route index element={<LazyHome />} />
+				<Route path={AppRoutes.TIMELINE} element={<LazyTimeLine />} />
+				<Route path={AppRoutes.BANK_CARD} element={<LazyBank />} />
+				<Route path={AppRoutes.CONTACTS} element={<LazyContact />} />
 			</Route>
 			<Route path={AppRoutes.NOT_FOUND} element="404" />
 		</Route>

@@ -2,7 +2,7 @@
 @import '@/constants/sizes.scss';
 .container {
 	font-size: $font-size-xvl;
-	margin-bottom: $padding-xvs;
+	margin-bottom: $sizes-xvs;
 }
 .title {
 	position: relative;
@@ -26,11 +26,11 @@
 .wrapper {
 	display: flex;
 	justify-content: space-between;
-	margin-top: $padding-xxxl;
+	margin-top: $sizes-xxxl;
 	flex-wrap: wrap;
 
 	@media screen and (max-width: 1040px) {
 		justify-content: center;
-		margin-top: $padding-xxxl;
+		margin-top: $sizes-xxxl;
 	}
 }

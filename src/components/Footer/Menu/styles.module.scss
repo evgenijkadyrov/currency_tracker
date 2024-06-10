@@ -1,5 +1,6 @@
 @import '@/styles/colors.scss';
 @import '@/constants/sizes.scss';
+
 .menuWrapper {
 	flex-basis: 40%;
 	display: flex;
@@ -24,17 +25,19 @@
 	color: $white-font;
 	font-size: $font-size-xxl;
 	font-weight: 400;
-	line-height: 150%;
+	line-height: $font-size-xvl;
 	letter-spacing: 0;
 	text-align: left;
-	margin-bottom: $padding-xxl;
+	margin-bottom: $sizes-xxl;
 	@media screen and (max-width: 600px) {
-		margin-bottom: $padding-l;
+		margin-bottom: $sizes-l;
 	}
 }
+
 .menuTitleLight {
 	color: $black-font;
 }
+
 .menuItem {
 	color: $dark-grey-font;
 	font-family: Inter, serif;
@@ -43,12 +46,13 @@
 	line-height: $font-size-xvl;
 	letter-spacing: 0;
 	text-align: left;
-	margin-bottom: $padding-xxl;
+	margin-bottom: $sizes-xxl;
 
 	@media screen and (max-width: 600px) {
-		margin-bottom: $padding-m;
+		margin-bottom: $sizes-m;
 	}
 }
+
 .menuItemLight {
 	color: $dark-grey-font;
 }

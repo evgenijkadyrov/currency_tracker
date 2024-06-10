@@ -1,7 +1,8 @@
+@import '@/styles/colors.scss';
 .mapContainer {
 	height: 660px;
 	width: 90%;
-	color: black;
+	color: $dark-background;
 	cursor: grab;
 	margin: 0 auto;
 	@media screen and (max-width: 700px) {

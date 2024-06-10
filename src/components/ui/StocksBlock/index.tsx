@@ -10,6 +10,7 @@ interface IStocksBlock {
 	setModalOpen: (value: boolean) => void;
 	setSymbol: (value: string) => void;
 }
+
 export const StocksBlock = ({
 	title,
 	data,

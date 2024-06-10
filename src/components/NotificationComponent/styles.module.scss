@@ -1,11 +1,12 @@
 @import '@/constants/sizes.scss';
 @import '@/styles/colors.scss';
+
 .container {
 	position: fixed;
 	top: 20px;
 	right: 20px;
 	width: 350px;
-	height: $padding-xxxl;
+	height: $sizes-xxxl;
 	background-color: $light-grey;
 	display: flex;
 	align-items: center;
