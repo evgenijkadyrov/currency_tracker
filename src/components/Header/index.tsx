@@ -1,6 +1,7 @@
 import logo from '@/assets/diagram-svgrepo-com 1.png';
 import { NavPanel } from '@/components/NavPanel';
 import { useTheme } from '@/hooks/useTheme';
+import { lastTimeCurrencyLoad } from '@/utils/calculateTimeDifference';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
 
 import * as styles from './styles.module.scss';
@@ -24,7 +25,9 @@ const Header = () => {
 				</div>
 				<div className={styles.updatedRow}>
 					<span className={styles.updatedPulseButton} />
-					<p className={styles.updatedText!}>Last updated at 11:59pm</p>
+					<p className={styles.updatedText!}>
+						Last updated at {lastTimeCurrencyLoad()}
+					</p>
 				</div>
 			</div>
 		</header>

@@ -1,15 +1,15 @@
-import { ChangeEvent, Component, ContextType } from 'react';
+import { ChangeEvent, Component } from 'react';
 
+import { fetchHistoricalData } from '@/api/currency';
 import { Chart } from '@/components/Chart';
 import { Modal } from '@/components/Modal';
 import { Observer, SubjectClass } from '@/components/Notification';
 import { Notification } from '@/components/NotificationComponent';
-import { ThemeContext } from '@/components/Theme';
+import { ThemeContext, ThemeContextProp } from '@/components/Theme';
 import { BasicItem } from '@/components/ui/BasicItem';
 import { DataPicker } from '@/components/ui/DatePicker';
 import { Input } from '@/components/ui/Input';
 import { SelectAsset } from '@/components/ui/SelectAssets';
-import { dataChart } from '@/constants/_daforChart';
 import { DataAssets } from '@/constants/dataAssets';
 import { IProps, IState } from '@/pages/TimeLine/index.interface';
 import { formatDateToISOString } from '@/utils/formattedDate.helper';
@@ -18,11 +18,9 @@ import { getLinkClass } from '@/utils/getLinkClass.helper';
 import * as styles from './styles.module.scss';
 
 class TimeLineClass extends Component<IProps, IState> implements Observer {
-	context!: ContextType<typeof ThemeContext>;
+	context!: ThemeContextProp;
 
 	private notification = new SubjectClass();
-
-	static contextType = ThemeContext;
 
 	constructor(props: IProps) {
 		super(props);
@@ -33,7 +31,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			selectedEndDate: null,
 			isModalActive: false,
 			historicalData: [],
-			limit: 10,
+			limit: 50,
 			inputValue: '',
 			dataReceived: false,
 			showMessage: false,
@@ -125,14 +123,14 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 		try {
 			const { currentAsset, selectedStartDate, selectedEndDate, limit } =
 				this.state;
-			// const result = await fetchHistoricalData(
-			// 	'USDT',
-			// 	currentAsset,
-			// 	selectedStartDate,
-			// 	selectedEndDate,
-			// 	limit
-			// );
-			const result = dataChart;
+			const result = await fetchHistoricalData(
+				'USDT',
+				currentAsset,
+				selectedStartDate,
+				selectedEndDate,
+				limit
+			);
+
 			this.setState((prevState) => ({
 				...prevState,
 				historicalData: result,
@@ -198,7 +196,6 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 				<div className={styles.chart}>
 					<Chart historicalData={historicalData} />
 				</div>
-				{/* <Chart historicalData={historicalData} /> */}
 				{isModalActive && (
 					<Modal
 						title="some modal title"
@@ -217,4 +214,5 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 	}
 }
 
+TimeLineClass.contextType = ThemeContext;
 export default TimeLineClass;

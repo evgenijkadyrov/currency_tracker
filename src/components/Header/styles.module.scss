@@ -49,7 +49,7 @@
 			$title-gradient-end
 		);
 		@media screen and (max-width: 800px) {
-			padding-right: 0px;
+			padding-right: 0;
 			text-align: center;
 		}
 
@@ -58,12 +58,12 @@
 		}
 
 		@media screen and (max-width: 600px) {
-			font-size: 38px;
+			font-size: $font-size-xvl;
 			padding: 0 30px;
 		}
 
 		@media screen and (max-width: 500px) {
-			font-size: 26px;
+			font-size: $font-size-xxl;
 		}
 	}
 
@@ -88,9 +88,8 @@
 }
 
 .updatedRow {
-	width: 450px;
+	width: 480px;
 	margin: 50px auto;
-
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -108,7 +107,6 @@
 	width: 30px;
 	height: 30px;
 	border: none;
-
 	border-radius: 50%;
 	background: $green;
 	cursor: pointer;

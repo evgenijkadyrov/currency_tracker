@@ -7,21 +7,14 @@ import { getLinkClass } from '@/utils/getLinkClass.helper';
 import * as styles from './styles.module.scss';
 
 interface IContactChartItem {
-	id: number;
 	title: string;
 	text: string;
 	link: string;
 }
-export const ContactChartItem = ({
-	id,
-	title,
-	text,
-	link,
-}: IContactChartItem) => {
+export const ContactChartItem = ({ title, text, link }: IContactChartItem) => {
 	const { theme } = useTheme();
 	return (
 		<div
-			key={id}
 			className={getLinkClass(
 				styles.contactBlockContent,
 				styles.contactBlockContentDark,

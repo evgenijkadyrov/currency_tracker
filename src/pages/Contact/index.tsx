@@ -22,8 +22,8 @@ const Contacts = () => {
 				</h4>
 			</div>
 			<div className={styles.containerContactBlock}>
-				{CHART_LISTS.map(({ title, text, link }, id) => (
-					<ContactChartItem id={id} title={title} text={text} link={link} />
+				{CHART_LISTS.map(({ title, text, link, id }) => (
+					<ContactChartItem key={id} title={title} text={text} link={link} />
 				))}
 			</div>
 			<ul className={styles.list}>

@@ -50,5 +50,3 @@ Launches lint to check for errors and fix them.
 [Babel](https://babeljs.io/)
 
 [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
-
-

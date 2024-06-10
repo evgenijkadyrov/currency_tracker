@@ -1,6 +1,6 @@
-import { ContextType, PureComponent, SyntheticEvent } from 'react';
+import React, { PureComponent, SyntheticEvent } from 'react';
 
-import { ThemeContext } from '@/components/Theme';
+import { ThemeContext, ThemeContextProp } from '@/components/Theme';
 import { currencies } from '@/utils/getCurrenciesList';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
 
@@ -24,9 +24,7 @@ export const getFilteredSymbols = (
 		.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
 export class Search extends PureComponent<IProps, IState> {
-	static contextType = ThemeContext;
-
-	context!: ContextType<typeof ThemeContext>;
+	context!: ThemeContextProp;
 
 	constructor(props: IProps) {
 		super(props);
@@ -96,3 +94,5 @@ export class Search extends PureComponent<IProps, IState> {
 		);
 	}
 }
+
+Search.contextType = ThemeContext;

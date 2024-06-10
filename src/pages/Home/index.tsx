@@ -1,22 +1,24 @@
 import { useEffect, useState } from 'react';
 
-import { ICurrencyData } from '@/api/currency';
+import { fetchCurrencyExchange, ICurrencyData } from '@/api/currency';
 import { ExchangeBlock } from '@/components/ExchangeBlock';
 import { Modal } from '@/components/Modal';
 import { StocksBlock } from '@/components/ui/StocksBlock';
-import { dataExchange } from '@/constants/_daforChart';
 import { dataStocks } from '@/constants/dataAssets';
+import { useModalAction } from '@/hooks/useModalAction';
+import {
+	calculateTimeDifference,
+	TIME_FOR_RELOAD,
+} from '@/utils/calculateTimeDifference';
 
 const Home = () => {
-	const [data, setData] = useState<ICurrencyData>();
-	const [isModalActive, setModalActive] = useState(false);
+	const [data, setData] = useState<ICurrencyData | undefined>(() => {
+		const cachedData = localStorage.getItem('currencyData');
+		return cachedData ? JSON.parse(cachedData) : undefined;
+	});
+
 	const [currentSymbol, setCurrentSymbol] = useState('');
-	const handleModalOpen = () => {
-		setModalActive(true);
-	};
-	const handleModalClose = () => {
-		setModalActive(false);
-	};
+	const { isModalActive, handleModalOpen, handleModalClose } = useModalAction();
 	const handleSymbol = (value: string) => {
 		setCurrentSymbol(value);
 	};
@@ -24,14 +26,17 @@ const Home = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				// const result = await fetchCurrencyExchange('USD');
-				setData(dataExchange);
+				const result = await fetchCurrencyExchange('USD');
+				setData(result);
+				localStorage.setItem('currencyData', JSON.stringify(result));
 			} catch (e) {
 				throw new Error(e);
 			}
 		};
 
-		fetchData();
+		if (!data || calculateTimeDifference() > TIME_FOR_RELOAD) {
+			fetchData();
+		}
 	}, []);
 
 	return (
