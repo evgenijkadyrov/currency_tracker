@@ -9,7 +9,7 @@ export const calculateTimeDifference = () => {
 
 export const lastTimeCurrencyLoad = () => {
 	const cachedData = JSON.parse(localStorage.getItem('currencyData'));
-	const lastFetchDate = Date.parse(cachedData.rates[0].time);
+	const lastFetchDate = Date.parse(cachedData?.rates[0].time) || Date.now();
 	const dateObj = new Date(lastFetchDate);
 	return dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 };
