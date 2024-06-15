@@ -1,5 +1,6 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
+
 .footerContainer {
 	width: 100%;
 	margin-top: $sizes-xxxl;
@@ -42,7 +43,7 @@
 	.rights {
 		color: $dark-grey-font;
 		font-size: $font-size-xxl;
-		font-weight: 400;
+		font-weight: $font-weight-normal;
 		text-align: center;
 		width: 100%;
 		@media screen and (max-width: 600px) {

@@ -28,13 +28,13 @@ const TimeLine = () => {
 	const handleModalClose = () => {
 		setModalActive(false);
 	};
-	const handleStartDate = (date: Date) => {
+	const handleStartDate = (date: Date | null) => {
 		setSelectedStartDate(formatDateToISOString(date));
 	};
 	const handleOpenModal = () => {
 		setModalActive(true);
 	};
-	const handleEndDate = (date: Date) => {
+	const handleEndDate = (date: Date | null) => {
 		setSelectedEndDate(formatDateToISOString(date));
 	};
 	const handleChangeLimit = () => {
@@ -56,7 +56,7 @@ const TimeLine = () => {
 				);
 				setHistoricalData(result);
 			} catch (e) {
-				throw new Error(e);
+				throw new Error(String(e));
 			}
 		};
 

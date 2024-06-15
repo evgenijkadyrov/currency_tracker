@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 
-import * as styles from '@/components/Footer/Description/styles.module.scss';
 import { Logo } from '@/components/NavPanel/Logo';
 import { ThemeContext } from '@/components/Theme';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
+
+import * as styles from './styles.module.scss';
 
 export const Description = () => {
 	const { theme } = useContext(ThemeContext);

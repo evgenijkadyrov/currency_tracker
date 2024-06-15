@@ -1,4 +1,5 @@
 import { KeyboardEvent, memo, ReactNode, useContext } from 'react';
+import classNames from 'classnames';
 
 import { ThemeContext } from '@/components/Theme';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
@@ -11,24 +12,35 @@ interface IBasicItem {
 	name: string;
 	value?: number;
 	setModalOpen?: (value: boolean) => void;
-	setSymbol?: (value: string) => void;
+	setSymbol?: (value: string | undefined) => void;
+	disabled?: boolean | undefined;
 }
 
 export const BasicItem = memo(
-	({ icon, name, value, setModalOpen, setSymbol }: IBasicItem) => {
+	({ icon, name, value, setModalOpen, setSymbol, disabled }: IBasicItem) => {
 		const { theme } = useContext(ThemeContext);
 		const handleClick = () => {
-			setModalOpen(true);
-			setSymbol(getSymbolByTitle(name));
+			if (!disabled ?? true) {
+				if (setModalOpen) {
+					setModalOpen(true);
+				}
+			}
+			if (setSymbol) {
+				setSymbol(getSymbolByTitle(name));
+			}
 		};
 		const handleKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
-			if (event.key === 'Enter') {
+			if (event.key === 'Enter' && !disabled) {
 				handleClick();
 			}
 		};
 		return (
 			<div
-				className={getLinkClass(styles.container, styles.containerDark, theme)}
+				className={classNames({
+					[styles.container]: true,
+					[styles.containerDark]: theme === 'light',
+					[styles.disabled]: !!disabled,
+				})}
 				onClick={handleClick}
 				onKeyDown={handleKeyPress}
 				role="button"

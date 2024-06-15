@@ -1,5 +1,6 @@
+@import '@/styles/sizes.scss';
 .container {
 	display: flex;
-	gap: 10px;
+	gap: $gap-size-sm;
 	justify-content: space-between;
 }

@@ -1,28 +1,45 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
+
+$position-bottom: -25px;
+$position-bottom-s: -5px;
+$height: 2px;
+
 .container {
 	font-size: $font-size-xvl;
-	margin-bottom: $sizes-xvs;
+	margin-bottom: $sizes-xxl;
+	@media screen and (max-width: 600px) {
+		margin-bottom: $sizes-m;
+	}
 }
+
 .title {
 	position: relative;
-	font-size: $font-size-xvl;
-	line-height: 40px;
+	font-size: $font-size-xxll;
+	line-height: $line-height-xxvl;
 	letter-spacing: 0;
 	text-align: left;
+	@media screen and (max-width: 600px) {
+		font-size: $font-size-xl;
+		line-height: $line-height-xl;
+		margin-left: $sizes-m;
+	}
 }
+
 .title::after {
 	content: '';
 	position: absolute;
-	bottom: -25px;
+	bottom: $position-bottom;
 	left: 0;
-	width: 520px;
-	height: 2px;
+	width: $container-width-xv;
+	height: $height;
 	background-color: $grey;
 	@media screen and (max-width: 600px) {
 		width: 100%;
+		bottom: $position-bottom-s;
 	}
 }
+
 .wrapper {
 	display: flex;
 	justify-content: space-between;
@@ -32,5 +49,8 @@
 	@media screen and (max-width: 1040px) {
 		justify-content: center;
 		margin-top: $sizes-xxxl;
+	}
+	@media screen and (max-width: 600px) {
+		margin-top: $sizes-xl;
 	}
 }

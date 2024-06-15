@@ -1,5 +1,5 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 .wrapper {
 	display: flex;
 }
@@ -13,7 +13,7 @@
 	&Text {
 		color: $white-font;
 		font-size: $font-size-xxl;
-		line-height: $font-size-xvl;
+		line-height: $line-height-xvl;
 		letter-spacing: 0;
 		text-align: left;
 		@media screen and (max-width: 600px) {
@@ -35,21 +35,21 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		font-size: $font-size-xxl;
-		font-weight: 600;
-		line-height: 40px;
+		font-weight: $font-weight-bold;
+		line-height: $line-height-xxvl;
 		letter-spacing: 0;
 		text-align: left;
 		margin-bottom: $sizes-xxxl;
 		@media screen and (max-width: 800px) {
 			font-size: $font-size-xl;
-			font-weight: 400;
-			line-height: $font-size-xxl;
+			font-weight: $font-weight-normal;
+			line-height: $line-height-xxl;
 		}
 
 		@media screen and (max-width: 500px) {
 			font-size: $font-size-s;
-			font-weight: 400;
-			line-height: $font-size-xl;
+			font-weight: $font-weight-normal;
+			line-height: $line-height-xl;
 		}
 	}
 }

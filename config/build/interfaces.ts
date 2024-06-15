@@ -1,5 +1,5 @@
 import { Mode } from './buildWebpack';
-export type BuildPaths = {
+export interface BuildPaths {
 	entry: string;
 	output: string;
 	html: string;
@@ -7,7 +7,7 @@ export type BuildPaths = {
 	public: string;
 	router: string;
 	components: string;
-};
+}
 export type BuildPlatform = 'mobile' | 'desktop';
 export interface BuildsOptions {
 	port: number;

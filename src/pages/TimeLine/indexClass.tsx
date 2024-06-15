@@ -74,14 +74,14 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 		}
 	};
 
-	handleStartDate = (date: Date) => {
+	handleStartDate = (date: Date | null) => {
 		this.setState((prevState) => ({
 			...prevState,
 			selectedStartDate: formatDateToISOString(date),
 		}));
 	};
 
-	handleEndDate = (date: Date): void => {
+	handleEndDate = (date: Date | null): void => {
 		const endDate = formatDateToISOString(date);
 		this.setState((prevState) => ({
 			...prevState,
@@ -138,7 +138,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			}));
 			this.notification.notifyObservers();
 		} catch (e) {
-			throw new Error(e);
+			throw new Error(String(e));
 		}
 	};
 
@@ -189,8 +189,10 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 					<div className={styles.containerItem} />
 					<BasicItem
 						key={currentAsset}
+						setSymbol={() => {}}
 						name={DataAssets[currentAsset].title}
 						icon={DataAssets[currentAsset].icon}
+						disabled
 					/>
 				</div>
 				<div className={styles.chart}>
@@ -198,7 +200,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 				</div>
 				{isModalActive && (
 					<Modal
-						title="some modal title"
+						title="Calendar"
 						onClose={this.handleModalClose}
 						size={{ width: '700px', height: '350px' }}
 					>

@@ -1,5 +1,6 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
+
 .menuContainer {
 	position: absolute;
 	top: 0;
@@ -14,6 +15,7 @@
 	padding: $sizes-xvl $sizes-xvs $sizes-xxl $sizes-xxl;
 	z-index: 1000;
 	transition: transform 0.3s ease-in-out;
+
 	&Dark {
 		background-color: $light-background;
 	}

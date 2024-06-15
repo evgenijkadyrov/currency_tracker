@@ -2,11 +2,11 @@ import { configApiCurrency, instanceCurrency } from '@/api/api';
 import { DataAssets } from '@/constants/dataAssets';
 import { getAssetsList } from '@/utils/getCurrenciesList';
 
-type CurrencyExchange = {
+interface CurrencyExchange {
 	time: string;
 	asset_id_quote: string;
 	rate: number;
-};
+}
 export interface ICurrencyData {
 	asset_id_base: string;
 	rates: CurrencyExchange[];
@@ -52,8 +52,8 @@ export const getExchange = async (
 export const fetchHistoricalData = async (
 	assetIdQuote: string,
 	assetIdBase: string,
-	time_period_start: string,
-	time_period_end: string,
+	time_period_start: string | null,
+	time_period_end: string | null,
 	limit: number
 ) => {
 	const { data } = await instanceCurrency.get<IHistoricalDate[]>(

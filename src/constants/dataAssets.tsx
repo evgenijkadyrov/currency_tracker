@@ -11,12 +11,12 @@ import ArgentinePeso from '@/assets/icons/Peso Argentino Icon.svg';
 import Yuan from '@/assets/icons/Won Icon.svg';
 import Yen from '@/assets/icons/Yen Icon.svg';
 
-type DataAssetType = {
+interface DataAssetType {
 	id: number;
 	title: string;
 	icon: ReactNode;
 	symbol: string;
-};
+}
 
 export interface IDataAssets {
 	[key: string]: DataAssetType;

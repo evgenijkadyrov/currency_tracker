@@ -20,13 +20,16 @@ export const Input = ({
 	disabled = false,
 }: IInputProps) => {
 	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		onChange(event);
+		if (onChange) {
+			onChange(event);
+		}
 	};
 
 	return (
 		<input
 			disabled={disabled}
 			type={type}
+			data-test="input"
 			name={name}
 			value={value}
 			className={className}

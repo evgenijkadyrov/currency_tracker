@@ -41,7 +41,7 @@ export const useControlExchange = (
 				const countResult = Number(assetAmount) * courseExchange;
 				setResultOfExchange(Number(countResult.toFixed(4)));
 			} catch (e) {
-				throw new Error(e);
+				throw new Error(String(e));
 			}
 		};
 		fetchData();
