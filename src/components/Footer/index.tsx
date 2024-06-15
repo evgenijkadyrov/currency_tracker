@@ -1,6 +1,8 @@
 import { Description } from '@/components/Footer/Description';
-import { Menu } from '@/components/Footer/Menu';
-import * as styles from '@/components/Footer/styles.module.scss';
+
+import { Menu } from './Menu';
+
+import * as styles from './styles.module.scss';
 
 export const Footer = () => (
 	<footer>

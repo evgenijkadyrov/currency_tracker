@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 
 import { CloseIcon } from '@/assets/icons/CloseIcon';
 import { BurgerMenu } from '@/components/BurgerMenu';
-import { Logo } from '@/components/NavPanel/Logo';
-import { NavBar } from '@/components/NavPanel/NavBar';
-import { Toggle } from '@/components/NavPanel/Toggle';
 import { dataNavPanel } from '@/constants/appRoutes';
 import { useTheme } from '@/hooks/useTheme';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
+
+import { Logo } from './Logo';
+import { NavBar } from './NavBar';
+import { Toggle } from './Toggle';
 
 import * as styles from './styles.module.scss';
 

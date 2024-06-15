@@ -1,7 +1,7 @@
 import type { MouseEventHandler } from 'react';
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
-import Portal, { createContainer } from '@/components/Modal/Portal';
+import Portal, { createContainer } from './Portal';
 
 import * as styles from './styles.module.scss';
 

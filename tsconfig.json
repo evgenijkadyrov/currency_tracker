@@ -20,6 +20,7 @@
 			"@/actions/*": ["./src/store/actions/*"],
 			"@/reducers/*": ["./src/store/reducers/*"],
 			"@/utils/*": ["./src/utils/*"],
+			"@icons/*": ["/assets/icons/*"],
 			"@/router/*": ["./src/router/*"]
 		}
 	},

@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 
-import * as styles from '@/components/Footer/Menu/styles.module.scss';
 import { ThemeContext } from '@/components/Theme';
 import { MENU_DATA } from '@/constants/dataMenu';
 import { getLinkClass } from '@/utils/getLinkClass.helper';
+
+import * as styles from './styles.module.scss';
 
 export const Menu = () => {
 	const { theme } = useContext(ThemeContext);

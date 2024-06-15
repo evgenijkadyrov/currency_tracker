@@ -4,6 +4,7 @@ import { buildLoader } from './buildLoader';
 import { BuildPlatform, BuildsOptions } from './types';
 import { buildPlugins } from './buildPlugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import path from 'path';
 
 export type Mode = 'production' | 'development';
 
@@ -32,8 +33,9 @@ export function buildWebpack(options: BuildsOptions): webpack.Configuration {
 			extensions: ['.tsx', '.ts', '.js'],
 			alias: {
 				'@': paths.src,
-				'@router': paths.src,
+				'@router/*': paths.router,
 				'@components/*': paths.components,
+				'@icons/*': path.resolve(__dirname, 'assets/icons/*'),
 			},
 		},
 		plugins: buildPlugins(options),
