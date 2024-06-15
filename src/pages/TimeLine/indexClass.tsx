@@ -200,7 +200,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 				</div>
 				{isModalActive && (
 					<Modal
-						title="some modal title"
+						title="Calendar"
 						onClose={this.handleModalClose}
 						size={{ width: '700px', height: '350px' }}
 					>

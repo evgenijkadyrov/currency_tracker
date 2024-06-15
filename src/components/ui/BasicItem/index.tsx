@@ -13,7 +13,7 @@ interface IBasicItem {
 	value?: number;
 	setModalOpen?: (value: boolean) => void;
 	setSymbol?: (value: string | undefined) => void;
-	disabled?: boolean;
+	disabled?: boolean | undefined;
 }
 
 export const BasicItem = memo(
@@ -36,7 +36,6 @@ export const BasicItem = memo(
 		};
 		return (
 			<div
-				// className={getLinkClass(styles.container, styles.containerDark, theme)}
 				className={classNames({
 					[styles.container]: true,
 					[styles.containerDark]: theme === 'light',

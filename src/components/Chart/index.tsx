@@ -37,9 +37,5 @@ export const Chart = memo(({ historicalData }: IChart) => {
 
 	const options: any = getOptions(historicalData, theme);
 	const data: any = getData(historicalData);
-	return (
-		<div>
-			<Bar data={data} options={options} plugins={plugins} />
-		</div>
-	);
+	return <Bar data={data} options={options} plugins={plugins} />;
 });
