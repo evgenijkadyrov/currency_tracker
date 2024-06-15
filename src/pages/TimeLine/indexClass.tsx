@@ -31,7 +31,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			selectedEndDate: null,
 			isModalActive: false,
 			historicalData: [],
-			limit: 1,
+			limit: 50,
 			inputValue: '',
 			dataReceived: false,
 			showMessage: false,
