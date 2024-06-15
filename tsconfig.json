@@ -9,6 +9,7 @@
 		"esModuleInterop": true,
 		"jsx": "react-jsx",
 		"allowJs": true,
+		"strict": true,
 		"moduleResolution": "Node",
 		"types": ["cypress", "node"],
 		"paths": {
@@ -19,6 +20,7 @@
 			"@/actions/*": ["./src/store/actions/*"],
 			"@/reducers/*": ["./src/store/reducers/*"],
 			"@/utils/*": ["./src/utils/*"],
+			"@icons/*": ["/assets/icons/*"],
 			"@/router/*": ["./src/router/*"]
 		}
 	},

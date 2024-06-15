@@ -8,15 +8,18 @@ import {
 } from '@/styles/colors';
 
 export type Theme = 'light' | 'dark';
-export type ThemeContextProp = { theme: Theme; toggleTheme: () => void };
+export interface ThemeContextProp {
+	theme: Theme;
+	toggleTheme: () => void;
+}
 
 export const ThemeContext = createContext<ThemeContextProp>(
 	{} as ThemeContextProp
 );
-type Props = {
+interface IProps {
 	children: string | ReactElement | ReactElement[];
-};
-export const ThemeProvider = ({ children }: Props) => {
+}
+export const ThemeProvider = ({ children }: IProps) => {
 	const [theme, setTheme] = useState<Theme>('dark');
 	const toggleTheme = () => {
 		setTheme(theme === 'light' ? 'dark' : 'light');

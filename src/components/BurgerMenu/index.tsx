@@ -33,7 +33,7 @@ export const BurgerMenu = ({ children, open, onClose }: MenuProps) => {
 	}, [onClose]);
 
 	return (
-		<div>
+		<>
 			<div
 				className={`${styles.overlay} ${open ? styles.open : ''}`}
 				onClick={onClose}
@@ -46,6 +46,6 @@ export const BurgerMenu = ({ children, open, onClose }: MenuProps) => {
 			>
 				{children}
 			</div>
-		</div>
+		</>
 	);
 };

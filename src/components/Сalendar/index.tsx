@@ -4,7 +4,7 @@ import { useCalendar } from '@/hooks/useCalendar';
 import * as styles from './styles.module.scss';
 
 export interface ICalendarProps {
-	onSelectDate: (date: Date) => void;
+	onSelectDate: (date: Date | null) => void;
 }
 
 export const Calendar = ({ onSelectDate }: ICalendarProps) => {

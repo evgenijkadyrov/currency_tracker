@@ -1,5 +1,5 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 
 .menuWrapper {
 	flex-basis: 40%;
@@ -9,10 +9,11 @@
 
 .menuContainer {
 	display: flex;
-	gap: 20px;
+	gap: $gap-size-l;
 
 	@media screen and (max-width: 600px) {
 		flex-direction: column;
+		gap: $gap-size-s;
 	}
 }
 
@@ -24,13 +25,14 @@
 .menuTitle {
 	color: $white-font;
 	font-size: $font-size-xxl;
-	font-weight: 400;
-	line-height: $font-size-xvl;
+	font-weight: $font-weight-normal;
+	line-height: $line-height-l;
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $sizes-xxl;
 	@media screen and (max-width: 600px) {
 		margin-bottom: $sizes-l;
+		font-size: $font-size-xl;
 	}
 }
 
@@ -42,14 +44,16 @@
 	color: $dark-grey-font;
 	font-family: Inter, serif;
 	font-size: $font-size-xxl;
-	font-weight: 400;
-	line-height: $font-size-xvl;
+	font-weight: $font-weight-normal;
+	line-height: $line-height-xvl;
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $sizes-xxl;
 
 	@media screen and (max-width: 600px) {
 		margin-bottom: $sizes-m;
+		font-size: $font-size-l;
+		line-height: $line-height-xl;
 	}
 }
 

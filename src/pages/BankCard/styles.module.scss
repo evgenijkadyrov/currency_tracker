@@ -1,15 +1,15 @@
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 .mapContainer {
-	margin-bottom: 200px;
+	margin-bottom: $sizes-xvvl;
 	display: flex;
 	flex-direction: column;
-	gap: 100px;
+	gap: $gap-size-xvl;
 
 	@media screen and (max-width: 700px) {
 		margin-bottom: $sizes-xvs;
 	}
 	@media screen and (max-width: 500px) {
-		gap: 60px;
+		gap: $gap-size-xxl;
 		margin-bottom: $sizes-xxxl;
 	}
 }

@@ -21,7 +21,7 @@ export const ExchangeBlock = memo(({ currentSymbol }: IExchangeBlock) => {
 	} = useControlExchange(currentSymbol);
 
 	return (
-		<div>
+		<>
 			<h4 className={styles.title}>Exchange assets</h4>
 			<div className={styles.row}>
 				<Input
@@ -60,6 +60,6 @@ export const ExchangeBlock = memo(({ currentSymbol }: IExchangeBlock) => {
 				className={styles.input}
 				placeholder="'Result of exchange'"
 			/>
-		</div>
+		</>
 	);
 });

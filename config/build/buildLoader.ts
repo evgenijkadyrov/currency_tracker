@@ -1,6 +1,6 @@
 import { ModuleOptions } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildsOptions } from './types';
+import { BuildsOptions } from 'config/build/interfaces';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import { buildBabelLoader } from './buildBabelLoader';
 
@@ -20,6 +20,7 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 	};
 	const svgrLoader = {
 		test: /\.svg$/i,
+		issuer: /\.[jt]sx?$/,
 		use: [
 			{
 				loader: '@svgr/webpack',
@@ -55,11 +56,5 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 		exclude: /node_modules/,
 	};
 	const babelLoader = buildBabelLoader();
-	return [
-		scssLoader,
-		//tsLoader,
-		babelLoader,
-		assetLoader,
-		svgrLoader,
-	];
+	return [scssLoader, babelLoader, assetLoader, svgrLoader];
 };

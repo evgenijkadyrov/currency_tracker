@@ -1,16 +1,18 @@
 @import '@/styles/colors.scss';
+@import '@/styles/sizes.scss';
+
 .mapContainer {
-	height: 660px;
+	height: $container-height-xxl;
 	width: 90%;
 	color: $dark-background;
 	cursor: grab;
 	margin: 0 auto;
 	@media screen and (max-width: 700px) {
-		height: 450px;
-		width: 450px;
+		height: $container-height-xxl;
+		width: $container-width-xxl;
 	}
 	@media screen and (max-width: 500px) {
-		height: 300px;
-		width: 300px;
+		height: $container-height-l;
+		width: $container-width-l;
 	}
 }

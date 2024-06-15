@@ -1,5 +1,5 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 .contactBlock {
 	display: flex;
 
@@ -9,15 +9,15 @@
 
 	&Content {
 		background-color: $dark-grey;
-		gap: 20px;
-		width: 350px;
+		gap: $gap-size-l;
+		width: $container-width-xl;
 		padding: $sizes-xl;
 		margin: $sizes-xl;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		border-radius: 10px;
+		border-radius: $border-radius-m;
 
 		&Dark {
 			background-color: $light-grey-background;

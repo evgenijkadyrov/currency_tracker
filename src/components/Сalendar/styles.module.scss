@@ -1,9 +1,10 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
+
+$width-calendar: 300px;
 
 .calendar {
-	width: 300px;
-	border: 1px solid $light-grey;
+	width: $width-calendar;
 	font-family: Arial, sans-serif;
 
 	table {
@@ -28,13 +29,13 @@
 		}
 
 		.current-month {
-			font-weight: bold;
+			font-weight: $font-weight-bold;
 		}
 
 		.selected {
 			background-color: $green;
 			color: $white;
-			font-weight: bold;
+			font-weight: $font-weight-bold;
 		}
 	}
 

@@ -1,18 +1,20 @@
 @import '@/styles/colors.scss';
+@import '@/styles/sizes.scss';
+
 .input {
 	-moz-appearance: none;
 	appearance: none;
 	outline: none;
 	margin: 0;
 	cursor: pointer;
-	width: 30px;
-	height: 30px;
+	width: $width-input-s;
+	height: $height-input-s;
 	border-radius: 50%;
-	border: 2px solid transparent;
+	border: $border-m solid transparent;
 
 	@media screen and (max-width: 500px) {
-		width: 20px;
-		height: 20px;
+		width: $width-input-s;
+		height: $height-input-s;
 	}
 }
 
@@ -21,35 +23,37 @@
 	align-items: center;
 	justify-content: space-around;
 	background-color: transparent;
-	border: 2px solid $white;
-	width: 60px;
-	border-radius: 15px;
+	border: $border-m solid $white;
+	width: $width-l;
+	border-radius: $border-radius-l;
 
 	input {
 		border-color: $black;
-		margin: 0 -20px 0 0;
+		margin: 0 $sizes-m 0 0;
 		background-color: $white;
 	}
 
 	@media screen and (max-width: 500px) {
-		width: 40px;
+		width: $width-l;
 	}
 }
+
 .radiosDark {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	background-color: transparent;
-	border: 2px solid $black;
-	width: 60px;
-	border-radius: 15px;
+	border: $border-m solid $black;
+	width: $width-l;
+	border-radius: $border-radius-l;
+
 	input {
-		border-color: $black;
-		margin: 0 20px 0 0;
+		border-color: $light-background;
+		margin: 0 $sizes-rev 0 0;
 		background-color: $black;
 	}
 
 	@media screen and (max-width: 500px) {
-		width: 40px;
+		width: $width-s;
 	}
 }
