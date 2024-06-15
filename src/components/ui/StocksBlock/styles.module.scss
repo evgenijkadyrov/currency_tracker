@@ -2,19 +2,28 @@
 @import '@/styles/sizes.scss';
 
 $position-bottom: -25px;
+$position-bottom-s: -5px;
 $height: 2px;
 
 .container {
 	font-size: $font-size-xvl;
-	margin-bottom: $sizes-xvs;
+	margin-bottom: $sizes-xxl;
+	@media screen and (max-width: 600px) {
+		margin-bottom: $sizes-m;
+	}
 }
 
 .title {
 	position: relative;
-	font-size: $font-size-xvl;
+	font-size: $font-size-xxll;
 	line-height: $line-height-xxvl;
 	letter-spacing: 0;
 	text-align: left;
+	@media screen and (max-width: 600px) {
+		font-size: $font-size-xl;
+		line-height: $line-height-xl;
+		margin-left: $sizes-m;
+	}
 }
 
 .title::after {
@@ -27,6 +36,7 @@ $height: 2px;
 	background-color: $grey;
 	@media screen and (max-width: 600px) {
 		width: 100%;
+		bottom: $position-bottom-s;
 	}
 }
 
@@ -39,5 +49,8 @@ $height: 2px;
 	@media screen and (max-width: 1040px) {
 		justify-content: center;
 		margin-top: $sizes-xxxl;
+	}
+	@media screen and (max-width: 600px) {
+		margin-top: $sizes-xl;
 	}
 }

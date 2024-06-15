@@ -3,6 +3,9 @@
 
 .container {
 	padding: $sizes-sl;
+	@media screen and (max-width: 600px) {
+		margin-left: $sizes-sl;
+	}
 }
 
 .containerDark {
@@ -39,6 +42,7 @@
 
 	@media screen and (max-width: 500px) {
 		padding: $sizes-sl 0;
+		font-size: $font-size-l;
 	}
 }
 
@@ -53,6 +57,10 @@
 	border-radius: $border-radius-l;
 	cursor: pointer;
 	transition: background-color 0.3s;
+	@media screen and (max-width: 500px) {
+		padding: $sizes-sl $sizes-sl;
+		font-size: $font-size-l;
+	}
 
 	&:hover {
 		transform: scale(1.05);

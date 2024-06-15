@@ -21,7 +21,7 @@
 
 	&Text {
 		margin-left: auto;
-		max-width: 60%;
+		max-width: 80%;
 		text-align: center;
 		font-size: $font-size-xxl;
 		@media screen and (max-width: 800px) {
@@ -75,8 +75,8 @@
 	}
 
 	&Image {
-		width: $container-width-l;
-		height: $container-height-l;
+		width: $container-width-s;
+		height: $container-height-s;
 
 		@media screen and (max-width: 800px) {
 			display: none;
@@ -101,6 +101,7 @@
 		width: 100%;
 		justify-content: center;
 		gap: $gap-size-l;
+		margin: $sizes-l auto;
 	}
 }
 

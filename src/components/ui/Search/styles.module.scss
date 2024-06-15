@@ -10,14 +10,14 @@ $max-height: 135px;
 	margin: 0 auto;
 
 	@media screen and (max-width: 450px) {
-		width: 100%;
+		width: $container-height-l;
 	}
 }
 
 .title {
-	margin-bottom: $sizes-xl;
+	margin-bottom: $sizes-l;
 	font-weight: $font-weight-normal;
-	font-size: $font-size-xvl;
+	font-size: $font-size-xxll;
 	color: $white-font;
 	text-align: center;
 

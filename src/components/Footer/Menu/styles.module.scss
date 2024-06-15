@@ -13,6 +13,7 @@
 
 	@media screen and (max-width: 600px) {
 		flex-direction: column;
+		gap: $gap-size-s;
 	}
 }
 
@@ -25,12 +26,13 @@
 	color: $white-font;
 	font-size: $font-size-xxl;
 	font-weight: $font-weight-normal;
-	line-height: $line-height-xvl;
+	line-height: $line-height-l;
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $sizes-xxl;
 	@media screen and (max-width: 600px) {
 		margin-bottom: $sizes-l;
+		font-size: $font-size-xl;
 	}
 }
 
@@ -50,6 +52,8 @@
 
 	@media screen and (max-width: 600px) {
 		margin-bottom: $sizes-m;
+		font-size: $font-size-l;
+		line-height: $line-height-xl;
 	}
 }
 

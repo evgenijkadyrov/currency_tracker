@@ -8,6 +8,7 @@ interface IContactChartItem {
 	text: string;
 	link: string;
 }
+const LINK_VERCEL = 'https://currency-tracker-three.vercel.app';
 export const ContactChartItem = ({ title, text, link }: IContactChartItem) => {
 	const { theme } = useTheme();
 	return (
@@ -29,10 +30,7 @@ export const ContactChartItem = ({ title, text, link }: IContactChartItem) => {
 				{' '}
 				{text}
 			</p>
-			<a
-				className={styles.contactBlockContentLink}
-				href="https://currency-tracker-three.vercel.app"
-			>
+			<a className={styles.contactBlockContentLink} href={LINK_VERCEL}>
 				{link}
 			</a>
 		</div>

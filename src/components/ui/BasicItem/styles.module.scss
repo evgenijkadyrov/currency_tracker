@@ -1,7 +1,7 @@
 @import '@/styles/colors.scss';
 @import '@/styles/sizes';
 
-$container-height: 153px;
+$container-height: 120px;
 $icon-width: 80px;
 $icon-width-s: 30px;
 $icon-height: 30px;
@@ -9,9 +9,8 @@ $icon-height-s: 80px;
 $height: 62px;
 
 .container {
-	width: $container-width-xv;
 	height: $container-height;
-	padding: $sizes-xxl $sizes-xvl $sizes-xxl $sizes-xxl;
+	padding: $sizes-l;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -74,18 +73,21 @@ $height: 62px;
 	flex-direction: column;
 	margin-left: $sizes-xxl;
 	width: $container-width-l;
+	@media screen and (max-width: 600px) {
+		margin-left: $sizes-l;
+	}
 }
 
 .containerBlockDataUpperText {
 	color: $light-grey-font;
-	font-size: $font-size-xvl;
+	font-size: $font-size-xxl;
 	font-weight: $font-weight-normal;
 	line-height: $line-height-xvvl;
 	letter-spacing: 0;
 	text-align: left;
 	@media screen and (max-width: 500px) {
 		font-size: $font-size-m;
-		line-height: $line-height-xvl;
+		line-height: $line-height-xl;
 	}
 }
 
@@ -95,7 +97,7 @@ $height: 62px;
 
 .containerBlockDataLowerText {
 	color: $grey-font;
-	font-size: $font-size-xvl;
+	font-size: $font-size-xl;
 	line-height: $line-height-xxvl;
 	letter-spacing: 0;
 	text-align: left;
