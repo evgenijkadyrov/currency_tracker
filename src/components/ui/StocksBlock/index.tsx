@@ -9,6 +9,7 @@ interface IStocksBlock {
 	data: ICurrencyData;
 	setModalOpen: (value: boolean) => void;
 	setSymbol: (value: string) => void;
+	disabled?: boolean;
 }
 
 export const StocksBlock = ({
@@ -16,6 +17,7 @@ export const StocksBlock = ({
 	data,
 	setModalOpen,
 	setSymbol,
+	disabled,
 }: IStocksBlock) => (
 	<div className={styles.container}>
 		<div className={styles.title}> {title}</div>
@@ -31,6 +33,7 @@ export const StocksBlock = ({
 						icon={icon}
 						setModalOpen={setModalOpen}
 						setSymbol={setSymbol}
+						disabled={disabled}
 					/>
 				);
 			})}

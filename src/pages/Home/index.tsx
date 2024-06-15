@@ -55,6 +55,7 @@ const Home = () => {
 				data={dataStocks}
 				setModalOpen={() => {}}
 				setSymbol={handleSymbol}
+				disabled
 			/>
 			<StocksBlock
 				title="Quotes"

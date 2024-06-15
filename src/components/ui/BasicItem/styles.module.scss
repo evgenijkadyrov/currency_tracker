@@ -17,6 +17,7 @@
 
 	&:hover {
 		transform: scale(1.05);
+		cursor: pointer;
 	}
 
 	@media screen and (max-width: 750px) {
@@ -33,7 +34,12 @@
 		margin-bottom: $sizes-l;
 	}
 }
-
+.disabled {
+	&:hover {
+		transform: scale(1);
+		cursor: default;
+	}
+}
 .containerBlock {
 	display: flex;
 	align-items: center;

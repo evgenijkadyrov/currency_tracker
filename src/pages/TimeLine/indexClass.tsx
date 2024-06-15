@@ -31,7 +31,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			selectedEndDate: null,
 			isModalActive: false,
 			historicalData: [],
-			limit: 50,
+			limit: 1,
 			inputValue: '',
 			dataReceived: false,
 			showMessage: false,
@@ -189,8 +189,10 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 					<div className={styles.containerItem} />
 					<BasicItem
 						key={currentAsset}
+						setSymbol={() => {}}
 						name={DataAssets[currentAsset].title}
 						icon={DataAssets[currentAsset].icon}
+						disabled
 					/>
 				</div>
 				<div className={styles.chart}>
