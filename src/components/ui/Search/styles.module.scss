@@ -1,9 +1,12 @@
 @import '@/styles/colors';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
+
+$position-top: 50px;
+$max-height: 135px;
 
 .inputContainer {
 	position: relative;
-	width: 450px;
+	width: $container-width-xxl;
 	margin: 0 auto;
 
 	@media screen and (max-width: 450px) {
@@ -13,7 +16,7 @@
 
 .title {
 	margin-bottom: $sizes-xl;
-	font-weight: 400;
+	font-weight: $font-weight-normal;
 	font-size: $font-size-xvl;
 	color: $white-font;
 	text-align: center;
@@ -30,12 +33,12 @@
 .input {
 	width: 100%;
 	padding: $sizes-m $sizes-l;
-	border: 1px solid $black;
+	border: $border-s solid $black;
 	font: inherit;
 	font-size: $font-size-xl;
-	font-weight: 400;
+	font-weight: $font-weight-normal;
 	outline: none;
-	border-radius: 8px;
+	border-radius: $border-radius-sm;
 
 	color: $black-font;
 	background-color: $white;
@@ -48,10 +51,10 @@
 
 .currencyList {
 	position: absolute;
-	top: 50px;
+	top: $position-top;
 	left: 0;
 	width: 100%;
-	max-height: 135px;
+	max-height: $max-height;
 	height: auto;
 	color: $black-font;
 	background-color: $white;

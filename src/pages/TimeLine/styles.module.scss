@@ -1,5 +1,5 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 
 .container {
 	padding: $sizes-sl;
@@ -11,7 +11,7 @@
 }
 
 .control {
-	gap: 10px;
+	gap: $gap-size-sm;
 
 	@media screen and (max-width: 700px) {
 		flex-direction: column;
@@ -26,7 +26,7 @@
 	font: inherit;
 	font-size: $font-size-xxl;
 	outline: none;
-	border-radius: 15px;
+	border-radius: $border-radius-l;
 	cursor: pointer;
 
 	&:hover {
@@ -50,7 +50,7 @@
 	margin-bottom: $sizes-m;
 	font-size: $font-size-xxl;
 	outline: none;
-	border-radius: 15px;
+	border-radius: $border-radius-l;
 	cursor: pointer;
 	transition: background-color 0.3s;
 

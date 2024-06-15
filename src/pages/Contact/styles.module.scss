@@ -1,6 +1,6 @@
 @import '@/styles/colors';
-@import '@/constants/sizes.scss';
-
+@import '@/styles/sizes.scss';
+$height: 2px;
 .container {
 	display: flex;
 	flex-direction: column;
@@ -9,8 +9,8 @@
 
 	&Title {
 		font-size: $font-size-xvl;
-		font-weight: 400;
-		line-height: $font-size-xxvl;
+		font-weight: $font-weight-normal;
+		line-height: $line-height-xvvll;
 		letter-spacing: 0;
 		text-align: left;
 		margin-bottom: $sizes-xxl;
@@ -22,7 +22,7 @@
 	}
 
 	&SubTitle {
-		font-weight: 400;
+		font-weight: $font-weight-normal;
 		font-size: $font-size-xl;
 		margin-bottom: $sizes-xxxl;
 		@media screen and (max-width: 600px) {
@@ -60,7 +60,7 @@
 		content: '';
 		display: block;
 		width: 0;
-		height: 2px;
+		height: $height;
 		transition: all 0.3s linear;
 	}
 
@@ -84,5 +84,5 @@
 .list {
 	margin-top: $sizes-xxl;
 	display: flex;
-	gap: 50px;
+	gap: $gap-size-xl;
 }

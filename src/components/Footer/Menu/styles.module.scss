@@ -1,5 +1,5 @@
 @import '@/styles/colors.scss';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 
 .menuWrapper {
 	flex-basis: 40%;
@@ -9,7 +9,7 @@
 
 .menuContainer {
 	display: flex;
-	gap: 20px;
+	gap: $gap-size-l;
 
 	@media screen and (max-width: 600px) {
 		flex-direction: column;
@@ -24,8 +24,8 @@
 .menuTitle {
 	color: $white-font;
 	font-size: $font-size-xxl;
-	font-weight: 400;
-	line-height: $font-size-xvl;
+	font-weight: $font-weight-normal;
+	line-height: $line-height-xvl;
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $sizes-xxl;
@@ -42,8 +42,8 @@
 	color: $dark-grey-font;
 	font-family: Inter, serif;
 	font-size: $font-size-xxl;
-	font-weight: 400;
-	line-height: $font-size-xvl;
+	font-weight: $font-weight-normal;
+	line-height: $line-height-xvl;
 	letter-spacing: 0;
 	text-align: left;
 	margin-bottom: $sizes-xxl;

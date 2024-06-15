@@ -1,5 +1,5 @@
 @import '@/styles/colors';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 
 .container {
 	padding-top: $sizes-xxxl;
@@ -35,7 +35,7 @@
 
 	&Title {
 		padding-right: $sizes-xxxl;
-		font-weight: 600;
+		font-weight: $font-weight-bold;
 		font-size: $font-size-xxvl;
 		text-align: right;
 
@@ -75,37 +75,39 @@
 	}
 
 	&Image {
-		width: 300px;
-		height: 300px;
+		width: $container-width-l;
+		height: $container-height-l;
 
 		@media screen and (max-width: 800px) {
 			display: none;
 		}
 	}
+
 	@media screen and (max-width: 600px) {
 		padding-bottom: $sizes-xxxl;
 	}
 }
 
 .updatedRow {
-	width: 480px;
+	width: $container-width-xxl;
 	margin: $sizes-xxxl auto;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	@media screen and (max-width: 700px) {
-		width: 400px;
+		width: $container-width-xll;
 	}
 	@media screen and (max-width: 600px) {
 		width: 100%;
 		justify-content: center;
-		gap: 20px;
+		gap: $gap-size-l;
 	}
 }
+
 .updatedPulseButton {
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: $width-input-m;
+	height: $height-input-m;
 	border: none;
 	border-radius: 50%;
 	background: $green;
@@ -114,8 +116,8 @@
 	animation: pulse 1.5s infinite;
 
 	@media screen and (max-width: 600px) {
-		width: 15px;
-		height: 15px;
+		width: $width-input-s;
+		height: $height-input-s;
 	}
 }
 
@@ -125,13 +127,14 @@
 	}
 	70% {
 		transform: scale(1);
-		box-shadow: 0 0 0 10px rgba($green, 0.5);
+		box-shadow: 0 0 0 $sizes-m rgba($green, 0.5);
 	}
 	100% {
 		transform: scale(0.9);
 		box-shadow: 0 0 0 0 rgba($green, 0);
 	}
 }
+
 .updatedText {
 	font-size: $font-size-xvl;
 	@media screen and (max-width: 700px) {
@@ -142,6 +145,7 @@
 		font-size: $font-size-m;
 	}
 }
+
 .dark {
 	background: linear-gradient(
 		45deg,

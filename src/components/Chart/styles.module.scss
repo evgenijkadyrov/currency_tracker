@@ -1,8 +1,9 @@
 @import '@/styles/colors.scss';
+@import '@/styles/sizes.scss';
 
 .container {
-	height: 500px;
+	height: $container-height-xv;
 	@media screen and (max-width: 500px) {
-		height: 350px;
+		height: $container-height-xl;
 	}
 }

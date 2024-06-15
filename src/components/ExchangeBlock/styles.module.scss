@@ -1,5 +1,5 @@
 @import '@/styles/colors';
-@import '@/constants/sizes.scss';
+@import '@/styles/sizes.scss';
 
 .title {
 	color: $white-font;
@@ -17,10 +17,10 @@
 
 .modal {
 	position: relative;
-	width: 500px;
-	height: 500px;
+	width: $container-width-xv;
+	height: $container-height-xv;
 	padding: $sizes-xxxl;
-	border-radius: 10px;
+	border-radius: $border-radius-m;
 	background-color: $dark-background;
 
 	@media screen and (max-width: 500px) {
@@ -70,9 +70,9 @@
 	padding: $sizes-m $sizes-l;
 	border: none;
 	font: inherit;
-	font-size: 24px;
+	font-size: $font-size-xxl;
 	outline: none;
-	border-radius: 15px;
+	border-radius: $border-radius-l;
 	transform: translateX(-50%);
 	cursor: pointer;
 	transition: all 0.3s linear;
@@ -89,7 +89,7 @@
 	font: inherit;
 	font-size: $font-size-xxl;
 	outline: none;
-	border-radius: 15px;
+	border-radius: $border-radius-l;
 	cursor: pointer;
 
 	@media screen and (max-width: 500px) {
