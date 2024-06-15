@@ -74,14 +74,14 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 		}
 	};
 
-	handleStartDate = (date: Date) => {
+	handleStartDate = (date: Date | null) => {
 		this.setState((prevState) => ({
 			...prevState,
 			selectedStartDate: formatDateToISOString(date),
 		}));
 	};
 
-	handleEndDate = (date: Date): void => {
+	handleEndDate = (date: Date | null): void => {
 		const endDate = formatDateToISOString(date);
 		this.setState((prevState) => ({
 			...prevState,
@@ -138,7 +138,7 @@ class TimeLineClass extends Component<IProps, IState> implements Observer {
 			}));
 			this.notification.notifyObservers();
 		} catch (e) {
-			throw new Error(e);
+			throw new Error(String(e));
 		}
 	};
 

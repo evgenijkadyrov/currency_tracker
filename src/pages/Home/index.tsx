@@ -19,8 +19,8 @@ const Home = () => {
 
 	const [currentSymbol, setCurrentSymbol] = useState('');
 	const { isModalActive, handleModalOpen, handleModalClose } = useModalAction();
-	const handleSymbol = (value: string) => {
-		setCurrentSymbol(value);
+	const handleSymbol = (value: string | undefined) => {
+		if (value) setCurrentSymbol(value);
 	};
 
 	useEffect(() => {
@@ -30,7 +30,7 @@ const Home = () => {
 				setData(result);
 				localStorage.setItem('currencyData', JSON.stringify(result));
 			} catch (e) {
-				throw new Error(e);
+				throw new Error(String(e));
 			}
 		};
 

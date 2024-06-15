@@ -1,12 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
-
 import { Calendar } from '@/components/Сalendar';
 
 import * as styles from './styles.module.scss';
 
 interface IDataPickerActions {
-	handleStartDate: Dispatch<SetStateAction<Date | null>>;
-	handleEndDate: Dispatch<SetStateAction<Date | null>>;
+	handleStartDate: (date: Date | null) => void;
+	handleEndDate: (date: Date | null) => void;
 }
 
 export const DataPicker = ({

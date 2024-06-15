@@ -13,8 +13,9 @@ import {
 } from 'chart.js';
 
 import { IHistoricalDate } from '@/api/currency';
-import { getData, getOptions, plugins } from '@/components/Chart/chart.config';
 import { useTheme } from '@/hooks/useTheme';
+
+import { getData, getOptions, plugins } from './chart.config';
 
 ChartJS.register(
 	CategoryScale,
@@ -34,8 +35,8 @@ interface IChart {
 export const Chart = memo(({ historicalData }: IChart) => {
 	const { theme } = useTheme();
 
-	const options = getOptions(historicalData, theme);
-	const data = getData(historicalData);
+	const options: any = getOptions(historicalData, theme);
+	const data: any = getData(historicalData);
 	return (
 		<div>
 			<Bar data={data} options={options} plugins={plugins} />

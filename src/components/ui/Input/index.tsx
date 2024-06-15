@@ -20,7 +20,9 @@ export const Input = ({
 	disabled = false,
 }: IInputProps) => {
 	const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-		onChange(event);
+		if (onChange) {
+			onChange(event);
+		}
 	};
 
 	return (

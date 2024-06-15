@@ -52,8 +52,8 @@ export const getExchange = async (
 export const fetchHistoricalData = async (
 	assetIdQuote: string,
 	assetIdBase: string,
-	time_period_start: string,
-	time_period_end: string,
+	time_period_start: string | null,
+	time_period_end: string | null,
 	limit: number
 ) => {
 	const { data } = await instanceCurrency.get<IHistoricalDate[]>(

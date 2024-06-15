@@ -82,26 +82,13 @@ const plugin = {
 		const { ctx } = chart;
 		ctx.save();
 		ctx.globalCompositeOperation = 'destination-over';
-		ctx.fillStyle = options.color || '#99ffff';
+		ctx.fillStyle = options.color || CHART_BACKGROUND_LIGHT;
 		ctx.fillRect(0, 0, chart.width, chart.height);
 		ctx.restore();
 	},
 };
-const plug = {
-	id: 'getElement',
-	events: ['click'],
-	beforeEvent(chart: any, args: any) {
-		const { event } = args;
 
-		if (event.type === 'click') {
-			// chart.data.datasets[1].data[0][0]=2
-			// chart.update();
-			// const xClick = chart.scales.x.getValueForPixel(event.native.offsetX);
-			// const barElement = chart.getDatasetMeta(0).data[xClick];
-		}
-	},
-};
-export const getOptions = (
+export const getOptions: any = (
 	historicalData: IHistoricalDate[],
 	theme: string
 ) => {
@@ -160,7 +147,8 @@ export const getOptions = (
 				ticks: {
 					reverse: true,
 					callback(labels: string, index: number) {
-						return index % 2 === 0 ? this.getLabelForValue(labels) : '';
+						const newThis = this as any;
+						return index % 2 === 0 ? newThis.getLabelForValue(labels) : '';
 					},
 				},
 				stacked: true,
@@ -179,7 +167,7 @@ export const getOptions = (
 		},
 	};
 };
-export const plugins: any = [hoverCrossHair, plugin, plug];
+export const plugins: any = [hoverCrossHair, plugin];
 export const getData = (historicalData: IHistoricalDate[]) => {
 	const { char1, char2, char3, labels } = useFormattedValue(historicalData);
 	return {

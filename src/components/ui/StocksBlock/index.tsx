@@ -6,9 +6,9 @@ import * as styles from './styles.module.scss';
 
 interface IStocksBlock {
 	title: string;
-	data: ICurrencyData;
-	setModalOpen: (value: boolean) => void;
-	setSymbol: (value: string) => void;
+	data: ICurrencyData | undefined;
+	setModalOpen: (value: boolean | undefined) => void;
+	setSymbol: (value: string | undefined) => void;
 	disabled?: boolean;
 }
 

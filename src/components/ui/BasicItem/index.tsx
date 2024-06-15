@@ -12,7 +12,7 @@ interface IBasicItem {
 	name: string;
 	value?: number;
 	setModalOpen?: (value: boolean) => void;
-	setSymbol?: (value: string) => void;
+	setSymbol?: (value: string | undefined) => void;
 	disabled?: boolean;
 }
 
@@ -20,8 +20,14 @@ export const BasicItem = memo(
 	({ icon, name, value, setModalOpen, setSymbol, disabled }: IBasicItem) => {
 		const { theme } = useContext(ThemeContext);
 		const handleClick = () => {
-			if (!disabled) setModalOpen(true);
-			setSymbol(getSymbolByTitle(name));
+			if (!disabled ?? true) {
+				if (setModalOpen) {
+					setModalOpen(true);
+				}
+			}
+			if (setSymbol) {
+				setSymbol(getSymbolByTitle(name));
+			}
 		};
 		const handleKeyPress = (event: KeyboardEvent<HTMLDivElement>) => {
 			if (event.key === 'Enter' && !disabled) {
