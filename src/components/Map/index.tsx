@@ -14,9 +14,9 @@ interface IState {
 	features: FeatureWithCurrencies[];
 }
 
-type IProps = {
+interface IProps {
 	inputValue: string;
-};
+}
 export default class MapComponent extends Component<IProps, IState> {
 	private mapContainer = createRef<HTMLDivElement>();
 

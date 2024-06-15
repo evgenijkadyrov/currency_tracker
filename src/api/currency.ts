@@ -2,11 +2,11 @@ import { configApiCurrency, instanceCurrency } from '@/api/api';
 import { DataAssets } from '@/constants/dataAssets';
 import { getAssetsList } from '@/utils/getCurrenciesList';
 
-type CurrencyExchange = {
+interface CurrencyExchange {
 	time: string;
 	asset_id_quote: string;
 	rate: number;
-};
+}
 export interface ICurrencyData {
 	asset_id_base: string;
 	rates: CurrencyExchange[];

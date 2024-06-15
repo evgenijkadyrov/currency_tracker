@@ -1,4 +1,4 @@
-import { BuildsOptions } from './types';
+import { BuildsOptions } from 'config/build/interfaces';
 
 export const buildDevServer = ({ port }: BuildsOptions) => {
 	return {

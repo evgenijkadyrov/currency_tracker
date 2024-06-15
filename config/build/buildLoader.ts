@@ -1,6 +1,6 @@
 import { ModuleOptions } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildsOptions } from './types';
+import { BuildsOptions } from 'config/build/interfaces';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import { buildBabelLoader } from './buildBabelLoader';
 
