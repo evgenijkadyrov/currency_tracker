@@ -29,6 +29,7 @@ export const Input = ({
 		<input
 			disabled={disabled}
 			type={type}
+			data-test="input"
 			name={name}
 			value={value}
 			className={className}

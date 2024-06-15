@@ -20,6 +20,7 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 	};
 	const svgrLoader = {
 		test: /\.svg$/i,
+		issuer: /\.[jt]sx?$/,
 		use: [
 			{
 				loader: '@svgr/webpack',
@@ -55,11 +56,5 @@ export const buildLoader = (options: BuildsOptions): ModuleOptions['rules'] => {
 		exclude: /node_modules/,
 	};
 	const babelLoader = buildBabelLoader();
-	return [
-		scssLoader,
-		//tsLoader,
-		babelLoader,
-		assetLoader,
-		svgrLoader,
-	];
+	return [scssLoader, babelLoader, assetLoader, svgrLoader];
 };
